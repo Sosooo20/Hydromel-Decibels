@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-parchment: #F2E3C0;
+  --color-parchment-light: #FAF4E4;
+  --color-parchment-dark: #DEC99A;
+  --color-forest: #1A2610;
+  --color-forest-mid: #2B3F18;
+  --color-brown: #3D2714;
+  --color-brown-mid: #6B4226;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E5C87A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--color-parchment);
+  --color-foreground: var(--color-brown);
+  --color-parchment: #F2E3C0;
+  --color-parchment-light: #FAF4E4;
+  --color-parchment-dark: #DEC99A;
+  --color-forest: #1A2610;
+  --color-forest-mid: #2B3F18;
+  --color-brown: #3D2714;
+  --color-brown-mid: #6B4226;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E5C87A;
+  --font-heading: var(--font-cinzel);
+  --font-display: var(--font-cinzel-decorative);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-parchment);
+  color: var(--color-brown);
+  font-family: var(--font-cinzel, Georgia, serif);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cinzel-decorative, var(--font-cinzel, Georgia, serif));
+  color: var(--color-brown);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-gold-light);
 }

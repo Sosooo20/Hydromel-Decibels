@@ -1,5 +1,13 @@
+import HeroBanner from "./components/HeroBanner";
+import MythSection from "./components/MythSection";
+import EventsPreview from "./components/EventsPreview";
+
 export default function Home() {
   return (
-    <h1>Page d'accueil</h1>
-  )
+    <>
+      <HeroBanner />
+      <MythSection />
+      <EventsPreview />
+    </>
+  );
 }
