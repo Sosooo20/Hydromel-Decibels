@@ -1,3 +1,8 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
 generator client {
   provider = "prisma-client"
   output   = "../app/generated/prisma"
@@ -7,78 +12,104 @@ datasource db {
   provider = "postgresql"
 }
 
-// ─── Enums ────────────────────────────────────────────────────────────────────
-
 enum Role {
   USER
   ADMIN
 }
 
-enum StandCategory {
-  VENTES
-  REPAS
+enum EventType {
+  CONCERT
+  ACTIVITY
+  FEAST
 }
 
-// ─── Models ───────────────────────────────────────────────────────────────────
+enum PoiCategory {
+  STAGE
+  FOOD
+  DRINK
+  SHOP
+  TOILET
+  ENTRANCE
+  CAMPING
+  INFO
+}
 
 model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  avatar    String?
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  registrations EventRegistration[]
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  username   String     @unique
+  name       String?
+  password   String
+  role       Role       @default(USER)
+  rank       String     @default("Apprenti Voyageur")
+  lutinsDor  Int        @default(0)
+  reliques   Int        @default(0)
+  questsDone Int        @default(0)
+  festivals  Int        @default(0)
+  createdAt  DateTime   @default(now())
+  favorites  Favorite[]
 }
 
-model Event {
-  id          String   @id @default(cuid())
+model Stage {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  slug   String  @unique
+  events Event[]
+}
+
+model Artist {
+  id          Int     @id @default(autoincrement())
+  slug        String  @unique
   name        String
   genre       String
   description String
-  date        DateTime
-  startTime   String
-  endTime     String
-  location    String
   imageUrl    String?
-  capacity    Int?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  registrations EventRegistration[]
+  bounty      Int?
+  featured    Boolean @default(false)
+  events      Event[]
 }
 
-/// Table de jointure : un utilisateur ne peut s'inscrire qu'une fois par événement
-model EventRegistration {
-  id           String   @id @default(cuid())
-  registeredAt DateTime @default(now())
+model Event {
+  id          Int       @id @default(autoincrement())
+  slug        String    @unique
+  title       String
+  type        EventType @default(CONCERT)
+  description String
+  imageUrl    String?
+  day         String
+  startTime   DateTime
+  endTime     DateTime
+  prize       String?
+  artistId    Int?
+  artist      Artist?   @relation(fields: [artistId], references: [id])
+  stageId     Int
+  stage       Stage     @relation(fields: [stageId], references: [id])
+  favorites   Favorite[]
+}
 
-  userId  String
-  eventId String
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+model Favorite {
+  id       Int     @id @default(autoincrement())
+  userId   Int
+  eventId  Int
+  reminder Boolean @default(false)
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event    Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
 
   @@unique([userId, eventId])
 }
 
-model Stand {
-  id          String        @id @default(cuid())
+model PointOfInterest {
+  id          Int         @id @default(autoincrement())
   name        String
-  category    StandCategory
+  category    PoiCategory
   description String?
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  imageUrl    String?
+  lat         Float
+  lng         Float
 }
 
-model Activity {
-  id          String   @id @default(cuid())
-  name        String
-  category    String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model NewsletterSubscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
