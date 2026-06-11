@@ -11,9 +11,7 @@ function LogoEmblem() {
 }
 
 const navLinks = [
-  { label: "Légende", href: "/" },
-  { label: "Artistes", href: "/evenement" },
-  { label: "Festin", href: "/festin" },
+  { label: "Evénements", href: "/evenement" },
   { label: "Carte", href: "/carte" },
 ];
 

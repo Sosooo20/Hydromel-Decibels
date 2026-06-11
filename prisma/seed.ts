@@ -34,235 +34,318 @@ async function main() {
   });
 
   // --- Artistes ---
-  const echoes = await prisma.artist.upsert({
-    where: { slug: "echoes-of-valhalla" },
-    update: {},
+  const aurora = await prisma.artist.upsert({
+    where: { slug: "aurora" },
+    update: { imageUrl: "/aurora.jpg" },
     create: {
-      slug: "echoes-of-valhalla",
-      name: "Echoes of Valhalla",
-      genre: "Nordic Folk Metal",
+      slug: "aurora",
+      name: "AURORA",
+      genre: "Art Pop / Folk",
       description:
-        "Une tempête de cordes et de tonnerre venue des cimes gelées du nord.",
+        "La fée norvégienne aux mélodies célestes, entre murmures de forêt et éclats de lumière boréale.",
+      imageUrl: "/aurora.jpg",
     },
   });
-  const barleyBards = await prisma.artist.upsert({
-    where: { slug: "the-barley-bards" },
-    update: {},
+  const pomme = await prisma.artist.upsert({
+    where: { slug: "pomme" },
+    update: { imageUrl: "/pomme.jpg" },
     create: {
-      slug: "the-barley-bards",
-      name: "The Barley Bards",
-      genre: "Celtic Tavern Punk",
+      slug: "pomme",
+      name: "Pomme",
+      genre: "Pop Folk",
       description:
-        "Des ballades rythmées qui transforment chaque inconnu en frère de taverne.",
+        "Des chansons douces et lumineuses portées par une voix cristalline venue d'un autre siècle.",
+      imageUrl: "/pomme.jpg",
     },
   });
-  const ironCitadel = await prisma.artist.upsert({
-    where: { slug: "iron-citadel" },
-    update: {},
+  const dreamcatcher = await prisma.artist.upsert({
+    where: { slug: "dreamcatcher" },
+    update: { imageUrl: "/dreamcatcher.webp" },
     create: {
-      slug: "iron-citadel",
-      name: "Iron Citadel",
-      genre: "Epic Power Metal",
+      slug: "dreamcatcher",
+      name: "Dreamcatcher",
+      genre: "K-Pop / Rock",
       description:
-        "Les murailles trembleront et l'hydromel coulera comme des rivières.",
+        "Sept guerrières venues d'Orient, mêlant rock électrique et chorégraphies ensorcelantes.",
+      imageUrl: "/dreamcatcher.webp",
     },
   });
-  const gunnar = await prisma.artist.upsert({
-    where: { slug: "gunnar-marteau-fou" },
-    update: {},
+  const ateez = await prisma.artist.upsert({
+    where: { slug: "ateez" },
+    update: { imageUrl: "/ateez.webp" },
     create: {
-      slug: "gunnar-marteau-fou",
-      name: "Gunnar Marteau-Fou",
-      genre: "Viking Metal",
+      slug: "ateez",
+      name: "ATEEZ",
+      genre: "K-Pop / Theatrical",
       description:
-        "Le marteau lève, la meute hurle : Gunnar mène la charge jusqu'à l'aube.",
+        "Huit guerriers venus de Corée, maîtres d'un univers de pirates et de conquérants — une scène dévastatrice.",
+      imageUrl: "/ateez.webp",
     },
   });
-  const sages = await prisma.artist.upsert({
-    where: { slug: "les-sages-de-lhydromel" },
-    update: {},
+  const alestorm = await prisma.artist.upsert({
+    where: { slug: "alestorm" },
+    update: { imageUrl: "/alestorm.jpg" },
     create: {
-      slug: "les-sages-de-lhydromel",
-      name: "Les Sages de l'Hydromel",
-      genre: "Celtic Punk",
+      slug: "alestorm",
+      name: "Alestorm",
+      genre: "Pirate Metal",
       description:
-        "Trois générations de troubadours réunies pour un dernier banquet endiablé.",
+        "Les pirates écossais du métal débarquent à Carcassonne — rhum, chopes et riffs à bord.",
+      imageUrl: "/alestorm.jpg",
     },
   });
-  const skald = await prisma.artist.upsert({
-    where: { slug: "skald-of-thunder" },
-    update: {},
+  const inExtremo = await prisma.artist.upsert({
+    where: { slug: "in-extremo" },
+    update: { imageUrl: "/in-extremo.jpg" },
     create: {
-      slug: "skald-of-thunder",
-      name: "Skald of Thunder",
-      genre: "Epic Folk Metal",
+      slug: "in-extremo",
+      name: "In Extremo",
+      genre: "Medieval Rock",
       description:
-        "Le barde-tonnerre raconte les sagas oubliées sur un tapis de riffs saturés.",
+        "Cornemuses, vielles à roue et guitares saturées : les chevaliers berlinois du rock médiéval.",
+      imageUrl: "/in-extremo.jpg",
     },
   });
-  const morrigane = await prisma.artist.upsert({
-    where: { slug: "morrigane-coeur-de-braise" },
-    update: {},
+  const wardruna = await prisma.artist.upsert({
+    where: { slug: "wardruna" },
+    update: { imageUrl: "/wardruna.jpg" },
     create: {
-      slug: "morrigane-coeur-de-braise",
-      name: "Morrigane Cœur-de-Braise",
-      genre: "Voix de Légende",
+      slug: "wardruna",
+      name: "Wardruna",
+      genre: "Norse Folk",
       description:
-        "Recherchée dans tout le royaume pour des chants capables de réveiller les morts... et les foules.",
-      featured: true,
+        "Einar Selvik convoque les runes et les anciens dieux dans un silence qui fait trembler la nuit.",
+      imageUrl: "/wardruna.jpg",
     },
   });
 
   // --- Événements ---
   await prisma.event.upsert({
-    where: { slug: "echoes-of-valhalla-vendredi" },
+    where: { slug: "aurora-vendredi" },
     update: {},
     create: {
-      slug: "echoes-of-valhalla-vendredi",
-      title: "Echoes of Valhalla",
+      slug: "aurora-vendredi",
+      title: "AURORA",
       type: EventType.CONCERT,
       description:
-        "Une tempête de cordes et de tonnerre venue des cimes gelées du nord.",
+        "La fée norvégienne aux mélodies célestes, entre murmures de forêt et éclats de lumière boréale.",
       day: "Vendredi",
       startTime: at(FRI, "14:00"),
       endTime: at(FRI, "15:30"),
-      artistId: echoes.id,
+      artistId: aurora.id,
+      stageId: chateau.id,
+    },
+  });
+
+  await prisma.event.upsert({
+    where: { slug: "wardruna-vendredi" },
+    update: {},
+    create: {
+      slug: "wardruna-vendredi",
+      title: "Wardruna",
+      type: EventType.CONCERT,
+      description:
+        "Einar Selvik convoque les runes et les anciens dieux dans un silence qui fait trembler la nuit.",
+      day: "Vendredi",
+      startTime: at(FRI, "17:00"),
+      endTime: at(FRI, "18:30"),
+      artistId: wardruna.id,
       stageId: dragon.id,
     },
   });
 
   await prisma.event.upsert({
-    where: { slug: "the-barley-bards-vendredi" },
+    where: { slug: "alestorm-vendredi" },
     update: {},
     create: {
-      slug: "the-barley-bards-vendredi",
-      title: "The Barley Bards",
+      slug: "alestorm-vendredi",
+      title: "Alestorm",
       type: EventType.CONCERT,
       description:
-        "Des ballades rythmées qui transforment chaque inconnu en frère de taverne.",
-      day: "Vendredi",
-      startTime: at(FRI, "16:30"),
-      endTime: at(FRI, "18:00"),
-      artistId: barleyBards.id,
-      stageId: taverne.id,
-    },
-  });
-
-  await prisma.event.upsert({
-    where: { slug: "iron-citadel-vendredi" },
-    update: {},
-    create: {
-      slug: "iron-citadel-vendredi",
-      title: "Iron Citadel",
-      type: EventType.CONCERT,
-      description:
-        "Les murailles trembleront et l'hydromel coulera comme des rivières.",
+        "Les pirates écossais du métal débarquent à Carcassonne — rhum, chopes et riffs à bord.",
       day: "Vendredi",
       startTime: at(FRI, "20:00"),
       endTime: at(FRI, "22:00"),
-      artistId: ironCitadel.id,
+      artistId: alestorm.id,
       stageId: chateau.id,
     },
   });
 
   await prisma.event.upsert({
-    where: { slug: "skald-of-thunder-vendredi" },
+    where: { slug: "pomme-samedi" },
     update: {},
     create: {
-      slug: "skald-of-thunder-vendredi",
-      title: "Skald of Thunder",
+      slug: "pomme-samedi",
+      title: "Pomme",
       type: EventType.CONCERT,
       description:
-        "Le barde-tonnerre raconte les sagas oubliées sur un tapis de riffs saturés.",
-      day: "Vendredi",
-      startTime: at(FRI, "21:00"),
-      endTime: at(FRI, "22:30"),
-      artistId: skald.id,
+        "Des chansons douces et lumineuses portées par une voix cristalline venue d'un autre siècle.",
+      day: "Samedi",
+      startTime: at(SAT, "16:00"),
+      endTime: at(SAT, "17:30"),
+      artistId: pomme.id,
+      stageId: taverne.id,
+    },
+  });
+
+  await prisma.event.upsert({
+    where: { slug: "in-extremo-samedi" },
+    update: {},
+    create: {
+      slug: "in-extremo-samedi",
+      title: "In Extremo",
+      type: EventType.CONCERT,
+      description:
+        "Cornemuses, vielles à roue et guitares saturées : les chevaliers berlinois du rock médiéval.",
+      day: "Samedi",
+      startTime: at(SAT, "19:00"),
+      endTime: at(SAT, "21:00"),
+      artistId: inExtremo.id,
       stageId: chateau.id,
     },
   });
 
   await prisma.event.upsert({
-    where: { slug: "gunnar-marteau-fou-vendredi" },
+    where: { slug: "dreamcatcher-dimanche" },
     update: {},
     create: {
-      slug: "gunnar-marteau-fou-vendredi",
-      title: "Gunnar Marteau-Fou",
+      slug: "dreamcatcher-dimanche",
+      title: "Dreamcatcher",
       type: EventType.CONCERT,
       description:
-        "Le marteau lève, la meute hurle : Gunnar mène la charge jusqu'à l'aube.",
-      day: "Vendredi",
-      startTime: at(FRI, "22:00"),
-      endTime: at(FRI, "23:30"),
-      artistId: gunnar.id,
+        "Sept guerrières venues d'Orient, mêlant rock électrique et chorégraphies ensorcelantes.",
+      day: "Dimanche",
+      startTime: at(SUN, "15:00"),
+      endTime: at(SUN, "16:30"),
+      artistId: dreamcatcher.id,
       stageId: dragon.id,
     },
   });
 
   await prisma.event.upsert({
-    where: { slug: "the-mead-workshop-samedi" },
+    where: { slug: "ateez-dimanche" },
     update: {},
     create: {
-      slug: "the-mead-workshop-samedi",
-      title: "The Mead Workshop",
-      type: EventType.ACTIVITY,
-      description:
-        "Atelier de dégustation et d'initiation à la fabrication de l'hydromel artisanal.",
-      day: "Samedi",
-      startTime: at(SAT, "14:00"),
-      endTime: at(SAT, "15:30"),
-      stageId: taverne.id,
-    },
-  });
-
-  await prisma.event.upsert({
-    where: { slug: "tir-a-larc-royal-samedi" },
-    update: {},
-    create: {
-      slug: "tir-a-larc-royal-samedi",
-      title: "Tir à l'Arc Royal",
-      type: EventType.ACTIVITY,
-      description:
-        "Défiez les meilleurs archers du royaume et tentez de remporter la faveur royale.",
-      day: "Samedi",
-      startTime: at(SAT, "16:00"),
-      endTime: at(SAT, "18:00"),
-      stageId: chateau.id,
-    },
-  });
-
-  await prisma.event.upsert({
-    where: { slug: "morrigane-coeur-de-braise-samedi" },
-    update: {},
-    create: {
-      slug: "morrigane-coeur-de-braise-samedi",
-      title: "Morrigane Cœur-de-Braise",
+      slug: "ateez-dimanche",
+      title: "ATEEZ",
       type: EventType.CONCERT,
       description:
-        "Recherchée dans tout le royaume pour des chants capables de réveiller les morts... et les foules.",
-      day: "Samedi",
-      startTime: at(SAT, "19:00"),
-      endTime: at(SAT, "20:30"),
-      artistId: morrigane.id,
-      stageId: chateau.id,
-    },
-  });
-
-  await prisma.event.upsert({
-    where: { slug: "les-sages-de-lhydromel-dimanche" },
-    update: {},
-    create: {
-      slug: "les-sages-de-lhydromel-dimanche",
-      title: "Les Sages de l'Hydromel",
-      type: EventType.CONCERT,
-      description:
-        "Trois générations de troubadours réunies pour un dernier banquet endiablé.",
+        "Huit guerriers venus de Corée, maîtres d'un univers de pirates et de conquérants — une scène dévastatrice.",
       day: "Dimanche",
       startTime: at(SUN, "18:00"),
-      endTime: at(SUN, "19:30"),
-      artistId: sages.id,
-      stageId: taverne.id,
+      endTime: at(SUN, "20:00"),
+      artistId: ateez.id,
+      stageId: chateau.id,
     },
+  });
+
+  // ─── Stands — Ventes ──────────────────────────────────────────────────────
+  await prisma.stand.deleteMany();
+  await prisma.stand.createMany({
+    data: [
+      {
+        name: "Vente de verres de vin",
+        category: "VENTES",
+        imageUrl: "/ventes-vins.jpg",
+        openTime: "11:00",
+        closeTime: "22:00",
+      },
+      {
+        name: "Vente de charcuterie",
+        category: "VENTES",
+        imageUrl: "/charcuterie.jpg",
+        description: "Saucisson, pâtés, rillettes, rosettes",
+        openTime: "11:00",
+        closeTime: "20:00",
+      },
+      {
+        name: "Vente de verres de bières",
+        category: "VENTES",
+        imageUrl: "/ventes-bieres.jpeg",
+        openTime: "11:00",
+        closeTime: "22:00",
+      },
+      {
+        name: "Bar à hydromel",
+        category: "VENTES",
+        imageUrl: "/hydromel.jpg",
+        description: "Hydromels artisanaux de la région, servis frais ou chauds",
+        openTime: "11:00",
+        closeTime: "23:00",
+      },
+      {
+        name: "Saucisses",
+        category: "REPAS",
+        imageUrl: "/chipolatas-barbecue.jpg",
+        openTime: "12:00",
+        closeTime: "21:00",
+      },
+      {
+        name: "Merguez",
+        category: "REPAS",
+        imageUrl: "/merguez-barbecue.webp",
+        openTime: "12:00",
+        closeTime: "21:00",
+      },
+      {
+        name: "Frites",
+        category: "REPAS",
+        imageUrl: "/frites.webp",
+        openTime: "12:00",
+        closeTime: "21:00",
+      },
+      {
+        name: "Boissons",
+        category: "REPAS",
+        imageUrl: "/boissons.jpg",
+        openTime: "11:00",
+        closeTime: "22:00",
+      },
+    ],
+  });
+
+  // ─── Activités ────────────────────────────────────────────────────────────
+  await prisma.activity.deleteMany();
+  await prisma.activity.createMany({
+    data: [
+      {
+        name: "Tir à l'Arc Royal",
+        category: "Compétition",
+        imageUrl: "/tir-a-arc-royal.jpg",
+        description: "Défiez les meilleurs archers du royaume et tentez de remporter la faveur royale.",
+        startTime: "16:00",
+        endTime: "18:00",
+      },
+      {
+        name: "Courses de sacs à patate",
+        category: "Jeux pour enfants",
+        imageUrl: "/course-en-sac.webp",
+        startTime: "10:00",
+        endTime: "12:00",
+      },
+      {
+        name: "Tirs à l'arc",
+        category: "Jeux pour enfants",
+        imageUrl: "/tir-a-arc-enfant.jpg",
+        startTime: "10:00",
+        endTime: "18:00",
+      },
+      {
+        name: "Petit tour de poney",
+        category: "Jeux pour enfants",
+        imageUrl: "/poney.jpg",
+        startTime: "11:00",
+        endTime: "17:00",
+      },
+      {
+        name: "Spectacle de chevaliers",
+        category: "Jeux pour enfants",
+        imageUrl: "/spectacle-chevaliers.jpg",
+        description: "Combat de chevaliers en armure — un spectacle médiéval épique pour petits et grands.",
+        startTime: "15:00",
+        endTime: "16:00",
+      },
+    ],
   });
 
   // --- Points d'intérêt (Cité de Carcassonne) ---
@@ -385,25 +468,25 @@ async function main() {
     },
   });
 
-  const skaldEvent = await prisma.event.findUnique({
-    where: { slug: "skald-of-thunder-vendredi" },
-  });
   const meadWorkshop = await prisma.event.findUnique({
     where: { slug: "the-mead-workshop-samedi" },
   });
+  const ateezEvent = await prisma.event.findUnique({
+    where: { slug: "ateez-dimanche" },
+  });
 
-  if (skaldEvent) {
-    await prisma.favorite.upsert({
-      where: { userId_eventId: { userId: gauthier.id, eventId: skaldEvent.id } },
-      update: {},
-      create: { userId: gauthier.id, eventId: skaldEvent.id, reminder: true },
-    });
-  }
   if (meadWorkshop) {
     await prisma.favorite.upsert({
       where: { userId_eventId: { userId: gauthier.id, eventId: meadWorkshop.id } },
       update: {},
       create: { userId: gauthier.id, eventId: meadWorkshop.id, reminder: false },
+    });
+  }
+  if (ateezEvent) {
+    await prisma.favorite.upsert({
+      where: { userId_eventId: { userId: gauthier.id, eventId: ateezEvent.id } },
+      update: {},
+      create: { userId: gauthier.id, eventId: ateezEvent.id, reminder: true },
     });
   }
 

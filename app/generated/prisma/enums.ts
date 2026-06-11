@@ -17,6 +17,14 @@ export const Role = {
 export type Role = (typeof Role)[keyof typeof Role]
 
 
+export const StandCategory = {
+  VENTES: 'VENTES',
+  REPAS: 'REPAS'
+} as const
+
+export type StandCategory = (typeof StandCategory)[keyof typeof StandCategory]
+
+
 export const EventType = {
   CONCERT: 'CONCERT',
   ACTIVITY: 'ACTIVITY'

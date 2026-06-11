@@ -10,7 +10,6 @@ const navLinks = [
 const legalLinks = [
   { label: "Mentions légales", href: "#" },
   { label: "Confidentialité", href: "#" },
-  { label: "Contact", href: "#" },
 ];
 
 export default function Footer() {
@@ -22,10 +21,10 @@ export default function Footer() {
 
       {/* Corps du footer */}
       <div style={{ maxWidth: "1140px", margin: "0 auto", padding: "3.5rem 1.5rem 2rem" }}>
-        <div className="row g-5">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
 
           {/* ─── Branding ─── */}
-          <div className="col-12 col-md-5">
+          <div style={{ flex: "2 1 260px" }}>
             {/* Logo */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
               <div style={{
@@ -65,34 +64,10 @@ export default function Footer() {
               Carcassonne, chaque automne.
             </p>
 
-            {/* Réseaux sociaux */}
-            <div style={{ display: "flex", gap: "0.75rem" }}>
-              {/* Facebook */}
-              <a href="#" aria-label="Facebook" style={socialStyle}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
-              {/* Instagram */}
-              <a href="#" aria-label="Instagram" style={socialStyle}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
-                </svg>
-              </a>
-              {/* YouTube */}
-              <a href="#" aria-label="YouTube" style={socialStyle}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
-                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--color-forest)" />
-                </svg>
-              </a>
-            </div>
           </div>
 
           {/* ─── Navigation ─── */}
-          <div className="col-6 col-md-3">
+          <div style={{ flex: "1 1 140px" }}>
             <p style={footerHeadingStyle}>Navigation</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
               {navLinks.map((link) => (
@@ -106,7 +81,7 @@ export default function Footer() {
           </div>
 
           {/* ─── Infos pratiques ─── */}
-          <div className="col-6 col-md-4">
+          <div style={{ flex: "1 1 180px" }}>
             <p style={footerHeadingStyle}>Infos pratiques</p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
               {legalLinks.map((link) => (
@@ -155,18 +130,6 @@ export default function Footer() {
 
 // ─── Styles partagés ──────────────────────────────────────────────────────────
 
-const socialStyle: React.CSSProperties = {
-  width: "2.25rem",
-  height: "2.25rem",
-  borderRadius: "50%",
-  border: "1px solid rgba(255,255,255,0.15)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "var(--color-parchment-light)",
-  textDecoration: "none",
-  transition: "border-color 0.2s, color 0.2s",
-};
 
 const footerHeadingStyle: React.CSSProperties = {
   fontFamily: "var(--font-cinzel, Georgia, serif)",

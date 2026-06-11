@@ -56,6 +56,8 @@ export const ModelName = {
   Artist: 'Artist',
   Event: 'Event',
   Favorite: 'Favorite',
+  Stand: 'Stand',
+  Activity: 'Activity',
   PointOfInterest: 'PointOfInterest',
   NewsletterSubscriber: 'NewsletterSubscriber'
 } as const
@@ -139,6 +141,36 @@ export const FavoriteScalarFieldEnum = {
 } as const
 
 export type FavoriteScalarFieldEnum = (typeof FavoriteScalarFieldEnum)[keyof typeof FavoriteScalarFieldEnum]
+
+
+export const StandScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  openTime: 'openTime',
+  closeTime: 'closeTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StandScalarFieldEnum = (typeof StandScalarFieldEnum)[keyof typeof StandScalarFieldEnum]
+
+
+export const ActivityScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  category: 'category',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
 
 
 export const PointOfInterestScalarFieldEnum = {
