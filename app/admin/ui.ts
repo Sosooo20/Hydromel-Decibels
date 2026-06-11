@@ -5,10 +5,10 @@ export const labelClass =
   "font-heading mb-1 block text-[10px] uppercase tracking-[0.2em] text-brown-mid";
 
 export const buttonClass =
-  "font-heading rounded-full bg-gold px-6 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-forest transition-colors hover:bg-gold-light";
+  "font-heading flex flex-shrink-0 items-center gap-3 rounded-lg border-l-4 px-3 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors  border-gold bg-forest  text-gold";
 
 export const secondaryButtonClass =
-  "font-heading inline-block rounded-full border border-parchment-dark px-6 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-brown-mid no-underline transition-colors hover:border-gold hover:text-brown";
+  "font-heading inline-block rounded-full border bg-parchment-light border-parchment-dark px-6 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-brown-mid no-underline transition-colors hover:border-gold hover:text-brown";
 
 export const dangerButtonClass =
   "font-heading rounded-full border border-red-300 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-red-700 transition-colors hover:bg-red-50";
