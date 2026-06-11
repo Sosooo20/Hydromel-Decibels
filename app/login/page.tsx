@@ -121,6 +121,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => switchTab("login")}
+            style={{ borderRadius: tab === "login" ? "20px" : "999px" }}
             className={`font-heading rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${
               tab === "login"
                 ? "bg-forest text-parchment-light"
@@ -132,6 +133,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={() => switchTab("register")}
+            style={{ borderRadius: tab === "register" ? "20px" : "999px" }}
             className={`font-heading rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors ${
               tab === "register"
                 ? "bg-forest text-parchment-light"
