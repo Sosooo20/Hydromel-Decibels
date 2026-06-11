@@ -229,8 +229,8 @@ a:hover {
   text-transform: uppercase;
   padding: 1rem 2.5rem;
   border-radius: 999px;
-  border: 2px solid #FAF7EC;
-  color: #FAF7EC;
+  border: 2px solid #ffffff;
+  color: #ffffff;
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
