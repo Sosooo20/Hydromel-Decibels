@@ -28,12 +28,10 @@ export type AggregateArtist = {
 
 export type ArtistAvgAggregateOutputType = {
   id: number | null
-  bounty: number | null
 }
 
 export type ArtistSumAggregateOutputType = {
   id: number | null
-  bounty: number | null
 }
 
 export type ArtistMinAggregateOutputType = {
@@ -43,7 +41,6 @@ export type ArtistMinAggregateOutputType = {
   genre: string | null
   description: string | null
   imageUrl: string | null
-  bounty: number | null
   featured: boolean | null
 }
 
@@ -54,7 +51,6 @@ export type ArtistMaxAggregateOutputType = {
   genre: string | null
   description: string | null
   imageUrl: string | null
-  bounty: number | null
   featured: boolean | null
 }
 
@@ -65,7 +61,6 @@ export type ArtistCountAggregateOutputType = {
   genre: number
   description: number
   imageUrl: number
-  bounty: number
   featured: number
   _all: number
 }
@@ -73,12 +68,10 @@ export type ArtistCountAggregateOutputType = {
 
 export type ArtistAvgAggregateInputType = {
   id?: true
-  bounty?: true
 }
 
 export type ArtistSumAggregateInputType = {
   id?: true
-  bounty?: true
 }
 
 export type ArtistMinAggregateInputType = {
@@ -88,7 +81,6 @@ export type ArtistMinAggregateInputType = {
   genre?: true
   description?: true
   imageUrl?: true
-  bounty?: true
   featured?: true
 }
 
@@ -99,7 +91,6 @@ export type ArtistMaxAggregateInputType = {
   genre?: true
   description?: true
   imageUrl?: true
-  bounty?: true
   featured?: true
 }
 
@@ -110,7 +101,6 @@ export type ArtistCountAggregateInputType = {
   genre?: true
   description?: true
   imageUrl?: true
-  bounty?: true
   featured?: true
   _all?: true
 }
@@ -208,7 +198,6 @@ export type ArtistGroupByOutputType = {
   genre: string
   description: string
   imageUrl: string | null
-  bounty: number | null
   featured: boolean
   _count: ArtistCountAggregateOutputType | null
   _avg: ArtistAvgAggregateOutputType | null
@@ -242,7 +231,6 @@ export type ArtistWhereInput = {
   genre?: Prisma.StringFilter<"Artist"> | string
   description?: Prisma.StringFilter<"Artist"> | string
   imageUrl?: Prisma.StringNullableFilter<"Artist"> | string | null
-  bounty?: Prisma.IntNullableFilter<"Artist"> | number | null
   featured?: Prisma.BoolFilter<"Artist"> | boolean
   events?: Prisma.EventListRelationFilter
 }
@@ -254,7 +242,6 @@ export type ArtistOrderByWithRelationInput = {
   genre?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  bounty?: Prisma.SortOrderInput | Prisma.SortOrder
   featured?: Prisma.SortOrder
   events?: Prisma.EventOrderByRelationAggregateInput
 }
@@ -269,7 +256,6 @@ export type ArtistWhereUniqueInput = Prisma.AtLeast<{
   genre?: Prisma.StringFilter<"Artist"> | string
   description?: Prisma.StringFilter<"Artist"> | string
   imageUrl?: Prisma.StringNullableFilter<"Artist"> | string | null
-  bounty?: Prisma.IntNullableFilter<"Artist"> | number | null
   featured?: Prisma.BoolFilter<"Artist"> | boolean
   events?: Prisma.EventListRelationFilter
 }, "id" | "slug">
@@ -281,7 +267,6 @@ export type ArtistOrderByWithAggregationInput = {
   genre?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  bounty?: Prisma.SortOrderInput | Prisma.SortOrder
   featured?: Prisma.SortOrder
   _count?: Prisma.ArtistCountOrderByAggregateInput
   _avg?: Prisma.ArtistAvgOrderByAggregateInput
@@ -300,7 +285,6 @@ export type ArtistScalarWhereWithAggregatesInput = {
   genre?: Prisma.StringWithAggregatesFilter<"Artist"> | string
   description?: Prisma.StringWithAggregatesFilter<"Artist"> | string
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Artist"> | string | null
-  bounty?: Prisma.IntNullableWithAggregatesFilter<"Artist"> | number | null
   featured?: Prisma.BoolWithAggregatesFilter<"Artist"> | boolean
 }
 
@@ -310,7 +294,6 @@ export type ArtistCreateInput = {
   genre: string
   description: string
   imageUrl?: string | null
-  bounty?: number | null
   featured?: boolean
   events?: Prisma.EventCreateNestedManyWithoutArtistInput
 }
@@ -322,7 +305,6 @@ export type ArtistUncheckedCreateInput = {
   genre: string
   description: string
   imageUrl?: string | null
-  bounty?: number | null
   featured?: boolean
   events?: Prisma.EventUncheckedCreateNestedManyWithoutArtistInput
 }
@@ -333,7 +315,6 @@ export type ArtistUpdateInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   events?: Prisma.EventUpdateManyWithoutArtistNestedInput
 }
@@ -345,7 +326,6 @@ export type ArtistUncheckedUpdateInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   events?: Prisma.EventUncheckedUpdateManyWithoutArtistNestedInput
 }
@@ -357,7 +337,6 @@ export type ArtistCreateManyInput = {
   genre: string
   description: string
   imageUrl?: string | null
-  bounty?: number | null
   featured?: boolean
 }
 
@@ -367,7 +346,6 @@ export type ArtistUpdateManyMutationInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -378,7 +356,6 @@ export type ArtistUncheckedUpdateManyInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -389,13 +366,11 @@ export type ArtistCountOrderByAggregateInput = {
   genre?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  bounty?: Prisma.SortOrder
   featured?: Prisma.SortOrder
 }
 
 export type ArtistAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  bounty?: Prisma.SortOrder
 }
 
 export type ArtistMaxOrderByAggregateInput = {
@@ -405,7 +380,6 @@ export type ArtistMaxOrderByAggregateInput = {
   genre?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  bounty?: Prisma.SortOrder
   featured?: Prisma.SortOrder
 }
 
@@ -416,26 +390,16 @@ export type ArtistMinOrderByAggregateInput = {
   genre?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
-  bounty?: Prisma.SortOrder
   featured?: Prisma.SortOrder
 }
 
 export type ArtistSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  bounty?: Prisma.SortOrder
 }
 
 export type ArtistNullableScalarRelationFilter = {
   is?: Prisma.ArtistWhereInput | null
   isNot?: Prisma.ArtistWhereInput | null
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -464,7 +428,6 @@ export type ArtistCreateWithoutEventsInput = {
   genre: string
   description: string
   imageUrl?: string | null
-  bounty?: number | null
   featured?: boolean
 }
 
@@ -475,7 +438,6 @@ export type ArtistUncheckedCreateWithoutEventsInput = {
   genre: string
   description: string
   imageUrl?: string | null
-  bounty?: number | null
   featured?: boolean
 }
 
@@ -501,7 +463,6 @@ export type ArtistUpdateWithoutEventsInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -512,7 +473,6 @@ export type ArtistUncheckedUpdateWithoutEventsInput = {
   genre?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bounty?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   featured?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
@@ -554,7 +514,6 @@ export type ArtistSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   genre?: boolean
   description?: boolean
   imageUrl?: boolean
-  bounty?: boolean
   featured?: boolean
   events?: boolean | Prisma.Artist$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.ArtistCountOutputTypeDefaultArgs<ExtArgs>
@@ -567,7 +526,6 @@ export type ArtistSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   genre?: boolean
   description?: boolean
   imageUrl?: boolean
-  bounty?: boolean
   featured?: boolean
 }, ExtArgs["result"]["artist"]>
 
@@ -578,7 +536,6 @@ export type ArtistSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   genre?: boolean
   description?: boolean
   imageUrl?: boolean
-  bounty?: boolean
   featured?: boolean
 }, ExtArgs["result"]["artist"]>
 
@@ -589,11 +546,10 @@ export type ArtistSelectScalar = {
   genre?: boolean
   description?: boolean
   imageUrl?: boolean
-  bounty?: boolean
   featured?: boolean
 }
 
-export type ArtistOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "name" | "genre" | "description" | "imageUrl" | "bounty" | "featured", ExtArgs["result"]["artist"]>
+export type ArtistOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "name" | "genre" | "description" | "imageUrl" | "featured", ExtArgs["result"]["artist"]>
 export type ArtistInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   events?: boolean | Prisma.Artist$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.ArtistCountOutputTypeDefaultArgs<ExtArgs>
@@ -613,7 +569,6 @@ export type $ArtistPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     genre: string
     description: string
     imageUrl: string | null
-    bounty: number | null
     featured: boolean
   }, ExtArgs["result"]["artist"]>
   composites: {}
@@ -1045,7 +1000,6 @@ export interface ArtistFieldRefs {
   readonly genre: Prisma.FieldRef<"Artist", 'String'>
   readonly description: Prisma.FieldRef<"Artist", 'String'>
   readonly imageUrl: Prisma.FieldRef<"Artist", 'String'>
-  readonly bounty: Prisma.FieldRef<"Artist", 'Int'>
   readonly featured: Prisma.FieldRef<"Artist", 'Boolean'>
 }
     

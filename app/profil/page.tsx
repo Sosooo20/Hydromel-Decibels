@@ -26,14 +26,20 @@ export default async function ProfilPage() {
   }
 
   const stats = [
-    { label: "Quêtes Finies", value: user.questsDone },
     { label: "Festivals", value: user.festivals },
-    { label: "Lutins d'Or", value: user.lutinsDor },
-    { label: "Reliques", value: user.reliques },
+    { label: "Pièces d'Or", value: user.pieceDor },
   ];
 
   return (
-    <section className="py-12">
+    <section
+      className="py-12"
+      style={{
+        backgroundImage: "url('/parchemin-bg.avif')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="mx-auto max-w-2xl px-4">
         <div className="mb-4 flex items-center justify-center gap-3">
           <div className="h-px w-8 bg-gold" />

@@ -15,7 +15,6 @@ const artistSchema = z.object({
   genre: z.string().min(2).max(150),
   description: z.string().min(1),
   imageUrl: z.string().url().optional().or(z.literal("")),
-  bounty: z.coerce.number().int().positive().optional().or(z.nan()),
   featured: z.coerce.boolean(),
 });
 
@@ -26,7 +25,6 @@ function parseForm(formData: FormData) {
     genre: formData.get("genre"),
     description: formData.get("description"),
     imageUrl: formData.get("imageUrl") || "",
-    bounty: formData.get("bounty") || undefined,
     featured: formData.get("featured") === "on",
   });
 
@@ -36,7 +34,6 @@ function parseForm(formData: FormData) {
     genre: parsed.genre,
     description: parsed.description,
     imageUrl: parsed.imageUrl || null,
-    bounty: Number.isNaN(parsed.bounty) ? null : (parsed.bounty ?? null),
     featured: parsed.featured,
   };
 }

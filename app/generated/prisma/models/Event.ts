@@ -48,7 +48,6 @@ export type EventMinAggregateOutputType = {
   day: string | null
   startTime: Date | null
   endTime: Date | null
-  prize: string | null
   artistId: number | null
   stageId: number | null
 }
@@ -63,7 +62,6 @@ export type EventMaxAggregateOutputType = {
   day: string | null
   startTime: Date | null
   endTime: Date | null
-  prize: string | null
   artistId: number | null
   stageId: number | null
 }
@@ -78,7 +76,6 @@ export type EventCountAggregateOutputType = {
   day: number
   startTime: number
   endTime: number
-  prize: number
   artistId: number
   stageId: number
   _all: number
@@ -107,7 +104,6 @@ export type EventMinAggregateInputType = {
   day?: true
   startTime?: true
   endTime?: true
-  prize?: true
   artistId?: true
   stageId?: true
 }
@@ -122,7 +118,6 @@ export type EventMaxAggregateInputType = {
   day?: true
   startTime?: true
   endTime?: true
-  prize?: true
   artistId?: true
   stageId?: true
 }
@@ -137,7 +132,6 @@ export type EventCountAggregateInputType = {
   day?: true
   startTime?: true
   endTime?: true
-  prize?: true
   artistId?: true
   stageId?: true
   _all?: true
@@ -239,7 +233,6 @@ export type EventGroupByOutputType = {
   day: string
   startTime: Date
   endTime: Date
-  prize: string | null
   artistId: number | null
   stageId: number
   _count: EventCountAggregateOutputType | null
@@ -277,7 +270,6 @@ export type EventWhereInput = {
   day?: Prisma.StringFilter<"Event"> | string
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Event"> | Date | string
-  prize?: Prisma.StringNullableFilter<"Event"> | string | null
   artistId?: Prisma.IntNullableFilter<"Event"> | number | null
   stageId?: Prisma.IntFilter<"Event"> | number
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
@@ -295,7 +287,6 @@ export type EventOrderByWithRelationInput = {
   day?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
-  prize?: Prisma.SortOrderInput | Prisma.SortOrder
   artistId?: Prisma.SortOrderInput | Prisma.SortOrder
   stageId?: Prisma.SortOrder
   artist?: Prisma.ArtistOrderByWithRelationInput
@@ -316,7 +307,6 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   day?: Prisma.StringFilter<"Event"> | string
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Event"> | Date | string
-  prize?: Prisma.StringNullableFilter<"Event"> | string | null
   artistId?: Prisma.IntNullableFilter<"Event"> | number | null
   stageId?: Prisma.IntFilter<"Event"> | number
   artist?: Prisma.XOR<Prisma.ArtistNullableScalarRelationFilter, Prisma.ArtistWhereInput> | null
@@ -334,7 +324,6 @@ export type EventOrderByWithAggregationInput = {
   day?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
-  prize?: Prisma.SortOrderInput | Prisma.SortOrder
   artistId?: Prisma.SortOrderInput | Prisma.SortOrder
   stageId?: Prisma.SortOrder
   _count?: Prisma.EventCountOrderByAggregateInput
@@ -357,7 +346,6 @@ export type EventScalarWhereWithAggregatesInput = {
   day?: Prisma.StringWithAggregatesFilter<"Event"> | string
   startTime?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
-  prize?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   artistId?: Prisma.IntNullableWithAggregatesFilter<"Event"> | number | null
   stageId?: Prisma.IntWithAggregatesFilter<"Event"> | number
 }
@@ -371,7 +359,6 @@ export type EventCreateInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artist?: Prisma.ArtistCreateNestedOneWithoutEventsInput
   stage: Prisma.StageCreateNestedOneWithoutEventsInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutEventInput
@@ -387,7 +374,6 @@ export type EventUncheckedCreateInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artistId?: number | null
   stageId: number
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutEventInput
@@ -402,7 +388,6 @@ export type EventUpdateInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artist?: Prisma.ArtistUpdateOneWithoutEventsNestedInput
   stage?: Prisma.StageUpdateOneRequiredWithoutEventsNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutEventNestedInput
@@ -418,7 +403,6 @@ export type EventUncheckedUpdateInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artistId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stageId?: Prisma.IntFieldUpdateOperationsInput | number
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutEventNestedInput
@@ -434,7 +418,6 @@ export type EventCreateManyInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artistId?: number | null
   stageId: number
 }
@@ -448,7 +431,6 @@ export type EventUpdateManyMutationInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type EventUncheckedUpdateManyInput = {
@@ -461,7 +443,6 @@ export type EventUncheckedUpdateManyInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artistId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stageId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -486,7 +467,6 @@ export type EventCountOrderByAggregateInput = {
   day?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
-  prize?: Prisma.SortOrder
   artistId?: Prisma.SortOrder
   stageId?: Prisma.SortOrder
 }
@@ -507,7 +487,6 @@ export type EventMaxOrderByAggregateInput = {
   day?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
-  prize?: Prisma.SortOrder
   artistId?: Prisma.SortOrder
   stageId?: Prisma.SortOrder
 }
@@ -522,7 +501,6 @@ export type EventMinOrderByAggregateInput = {
   day?: Prisma.SortOrder
   startTime?: Prisma.SortOrder
   endTime?: Prisma.SortOrder
-  prize?: Prisma.SortOrder
   artistId?: Prisma.SortOrder
   stageId?: Prisma.SortOrder
 }
@@ -626,6 +604,14 @@ export type EnumEventTypeFieldUpdateOperationsInput = {
   set?: $Enums.EventType
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type EventCreateNestedOneWithoutFavoritesInput = {
   create?: Prisma.XOR<Prisma.EventCreateWithoutFavoritesInput, Prisma.EventUncheckedCreateWithoutFavoritesInput>
   connectOrCreate?: Prisma.EventCreateOrConnectWithoutFavoritesInput
@@ -649,7 +635,6 @@ export type EventCreateWithoutStageInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artist?: Prisma.ArtistCreateNestedOneWithoutEventsInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutEventInput
 }
@@ -664,7 +649,6 @@ export type EventUncheckedCreateWithoutStageInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artistId?: number | null
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutEventInput
 }
@@ -708,7 +692,6 @@ export type EventScalarWhereInput = {
   day?: Prisma.StringFilter<"Event"> | string
   startTime?: Prisma.DateTimeFilter<"Event"> | Date | string
   endTime?: Prisma.DateTimeFilter<"Event"> | Date | string
-  prize?: Prisma.StringNullableFilter<"Event"> | string | null
   artistId?: Prisma.IntNullableFilter<"Event"> | number | null
   stageId?: Prisma.IntFilter<"Event"> | number
 }
@@ -722,7 +705,6 @@ export type EventCreateWithoutArtistInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   stage: Prisma.StageCreateNestedOneWithoutEventsInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutEventInput
 }
@@ -737,7 +719,6 @@ export type EventUncheckedCreateWithoutArtistInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   stageId: number
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutEventInput
 }
@@ -777,7 +758,6 @@ export type EventCreateWithoutFavoritesInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artist?: Prisma.ArtistCreateNestedOneWithoutEventsInput
   stage: Prisma.StageCreateNestedOneWithoutEventsInput
 }
@@ -792,7 +772,6 @@ export type EventUncheckedCreateWithoutFavoritesInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artistId?: number | null
   stageId: number
 }
@@ -822,7 +801,6 @@ export type EventUpdateWithoutFavoritesInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artist?: Prisma.ArtistUpdateOneWithoutEventsNestedInput
   stage?: Prisma.StageUpdateOneRequiredWithoutEventsNestedInput
 }
@@ -837,7 +815,6 @@ export type EventUncheckedUpdateWithoutFavoritesInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artistId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   stageId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -852,7 +829,6 @@ export type EventCreateManyStageInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   artistId?: number | null
 }
 
@@ -865,7 +841,6 @@ export type EventUpdateWithoutStageInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artist?: Prisma.ArtistUpdateOneWithoutEventsNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutEventNestedInput
 }
@@ -880,7 +855,6 @@ export type EventUncheckedUpdateWithoutStageInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artistId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutEventNestedInput
 }
@@ -895,7 +869,6 @@ export type EventUncheckedUpdateManyWithoutStageInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   artistId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
@@ -909,7 +882,6 @@ export type EventCreateManyArtistInput = {
   day: string
   startTime: Date | string
   endTime: Date | string
-  prize?: string | null
   stageId: number
 }
 
@@ -922,7 +894,6 @@ export type EventUpdateWithoutArtistInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stage?: Prisma.StageUpdateOneRequiredWithoutEventsNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutEventNestedInput
 }
@@ -937,7 +908,6 @@ export type EventUncheckedUpdateWithoutArtistInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stageId?: Prisma.IntFieldUpdateOperationsInput | number
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutEventNestedInput
 }
@@ -952,7 +922,6 @@ export type EventUncheckedUpdateManyWithoutArtistInput = {
   day?: Prisma.StringFieldUpdateOperationsInput | string
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   stageId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -997,7 +966,6 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   day?: boolean
   startTime?: boolean
   endTime?: boolean
-  prize?: boolean
   artistId?: boolean
   stageId?: boolean
   artist?: boolean | Prisma.Event$artistArgs<ExtArgs>
@@ -1016,7 +984,6 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   day?: boolean
   startTime?: boolean
   endTime?: boolean
-  prize?: boolean
   artistId?: boolean
   stageId?: boolean
   artist?: boolean | Prisma.Event$artistArgs<ExtArgs>
@@ -1033,7 +1000,6 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   day?: boolean
   startTime?: boolean
   endTime?: boolean
-  prize?: boolean
   artistId?: boolean
   stageId?: boolean
   artist?: boolean | Prisma.Event$artistArgs<ExtArgs>
@@ -1050,12 +1016,11 @@ export type EventSelectScalar = {
   day?: boolean
   startTime?: boolean
   endTime?: boolean
-  prize?: boolean
   artistId?: boolean
   stageId?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "type" | "description" | "imageUrl" | "day" | "startTime" | "endTime" | "prize" | "artistId" | "stageId", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "type" | "description" | "imageUrl" | "day" | "startTime" | "endTime" | "artistId" | "stageId", ExtArgs["result"]["event"]>
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   artist?: boolean | Prisma.Event$artistArgs<ExtArgs>
   stage?: boolean | Prisma.StageDefaultArgs<ExtArgs>
@@ -1088,7 +1053,6 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     day: string
     startTime: Date
     endTime: Date
-    prize: string | null
     artistId: number | null
     stageId: number
   }, ExtArgs["result"]["event"]>
@@ -1526,7 +1490,6 @@ export interface EventFieldRefs {
   readonly day: Prisma.FieldRef<"Event", 'String'>
   readonly startTime: Prisma.FieldRef<"Event", 'DateTime'>
   readonly endTime: Prisma.FieldRef<"Event", 'DateTime'>
-  readonly prize: Prisma.FieldRef<"Event", 'String'>
   readonly artistId: Prisma.FieldRef<"Event", 'Int'>
   readonly stageId: Prisma.FieldRef<"Event", 'Int'>
 }

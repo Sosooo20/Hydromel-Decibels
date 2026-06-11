@@ -38,7 +38,6 @@ export default async function AdminArtistesPage() {
               <tr>
                 <th className={thClass}>Nom</th>
                 <th className={thClass}>Genre</th>
-                <th className={`${thClass} w-28 text-right`}>Prime</th>
                 <th className={`${thClass} w-24`}>
                   <span className="sr-only">Recherché</span>
                 </th>
@@ -52,9 +51,6 @@ export default async function AdminArtistesPage() {
                 <tr key={artist.id} className={trClass}>
                   <td className={`${tdClass} font-display font-bold`}>{artist.name}</td>
                   <td className={`${tdClass} truncate text-brown-mid`}>{artist.genre}</td>
-                  <td className={`${tdClass} text-right`}>
-                    {artist.bounty != null ? `${artist.bounty} PO` : "—"}
-                  </td>
                   <td className={tdClass}>
                     {artist.featured && <span className={badgeClass}>Recherché</span>}
                   </td>

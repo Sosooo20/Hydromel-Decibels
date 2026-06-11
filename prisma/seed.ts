@@ -109,7 +109,6 @@ async function main() {
       genre: "Voix de Légende",
       description:
         "Recherchée dans tout le royaume pour des chants capables de réveiller les morts... et les foules.",
-      bounty: 1500,
       featured: true,
     },
   });
@@ -228,7 +227,6 @@ async function main() {
       day: "Samedi",
       startTime: at(SAT, "16:00"),
       endTime: at(SAT, "18:00"),
-      prize: "Médaille du Tireur d'Élite + 200 Lutins d'Or",
       stageId: chateau.id,
     },
   });
@@ -382,9 +380,7 @@ async function main() {
       password: userPassword,
       role: "USER",
       rank: "Chevalier du Mead",
-      lutinsDor: 850,
-      reliques: 2,
-      questsDone: 12,
+      pieceDor: 850,
       festivals: 4,
     },
   });

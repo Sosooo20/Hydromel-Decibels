@@ -84,9 +84,7 @@ export const UserScalarFieldEnum = {
   password: 'password',
   role: 'role',
   rank: 'rank',
-  lutinsDor: 'lutinsDor',
-  reliques: 'reliques',
-  questsDone: 'questsDone',
+  pieceDor: 'pieceDor',
   festivals: 'festivals',
   createdAt: 'createdAt'
 } as const
@@ -110,7 +108,6 @@ export const ArtistScalarFieldEnum = {
   genre: 'genre',
   description: 'description',
   imageUrl: 'imageUrl',
-  bounty: 'bounty',
   featured: 'featured'
 } as const
 
@@ -127,7 +124,6 @@ export const EventScalarFieldEnum = {
   day: 'day',
   startTime: 'startTime',
   endTime: 'endTime',
-  prize: 'prize',
   artistId: 'artistId',
   stageId: 'stageId'
 } as const

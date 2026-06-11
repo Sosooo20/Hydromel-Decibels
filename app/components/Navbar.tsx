@@ -1,17 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { auth } from "@/lib/auth";
 
 function LogoEmblem() {
   return (
-    <div className="w-8 h-8 rounded-sm bg-forest flex items-center justify-center flex-shrink-0">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M12 2L14.5 9H22L16 13.5L18.5 21L12 17L5.5 21L8 13.5L2 9H9.5Z"
-          fill="var(--color-gold)"
-          stroke="var(--color-gold-light)"
-          strokeWidth="0.5"
-        />
-      </svg>
+    <div className="w-8 h-8 rounded-sm bg-forest flex items-center justify-center flex-shrink-0 overflow-hidden">
+      <Image src="/Logo.png" alt="Logo" width={32} height={32} className="object-cover" />
     </div>
   );
 }

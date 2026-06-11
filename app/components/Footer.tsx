@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Accueil", href: "/" },
@@ -35,9 +36,9 @@ export default function Footer() {
                 borderRadius: "4px",
                 flexShrink: 0,
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-gold)">
-                  <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.3L12 17l-6.2 4.2 2.4-7.3L2 9.4h7.6z" />
-                </svg>
+                  <div className="w-8 h-8 rounded-sm bg-forest flex items-center justify-center flex-shrink-0 overflow-hidden">
+                      <Image src="/Logo.png" alt="Logo" width={32} height={32} className="object-cover" />
+                  </div>
               </div>
               <span style={{
                 fontFamily: "var(--font-cinzel, Georgia, serif)",

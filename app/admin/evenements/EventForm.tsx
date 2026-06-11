@@ -6,7 +6,6 @@ import { toDatetimeLocal } from "./datetime";
 const TYPE_OPTIONS = [
   { value: "CONCERT", label: "Concert" },
   { value: "ACTIVITY", label: "Activité" },
-  { value: "FEAST", label: "Festin" },
 ];
 
 export default function EventForm({
@@ -187,20 +186,6 @@ export default function EventForm({
             ))}
           </select>
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="prize" className={labelClass}>
-          Récompense
-        </label>
-        <input
-          id="prize"
-          name="prize"
-          type="text"
-          placeholder="50 Lutins d'Or"
-          defaultValue={event?.prize ?? ""}
-          className={inputClass}
-        />
       </div>
 
       <div className="flex items-center gap-3">

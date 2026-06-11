@@ -42,11 +42,6 @@ export default function ActivitiesGrid({ activities }: { activities: ActivityWit
                 </svg>
                 {activity.day} · {formatTimeRange(activity.startTime, activity.endTime)}
               </div>
-              {activity.prize && (
-                <div className="font-heading text-[11px] uppercase tracking-[0.1em] text-brown-mid">
-                  Récompense&nbsp;: {activity.prize}
-                </div>
-              )}
             </Link>
           ))}
         </div>

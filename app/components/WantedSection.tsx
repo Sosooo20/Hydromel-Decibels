@@ -46,12 +46,6 @@ export default function WantedSection({ artists }: { artists: FeaturedArtist[] }
                   {artist.description}
                 </p>
 
-                {artist.bounty != null && (
-                  <div className="mb-3 inline-block rounded-full bg-brown px-4 py-2 font-heading text-xs uppercase tracking-[0.2em] text-parchment-light">
-                    Prime&nbsp;: {artist.bounty} Lutins d&apos;Or
-                  </div>
-                )}
-
                 {event && (
                   <Link
                     href={`/evenement/${event.slug}`}

@@ -20,7 +20,6 @@ enum Role {
 enum EventType {
   CONCERT
   ACTIVITY
-  FEAST
 }
 
 enum PoiCategory {
@@ -42,9 +41,7 @@ model User {
   password   String
   role       Role       @default(USER)
   rank       String     @default("Apprenti Voyageur")
-  lutinsDor  Int        @default(0)
-  reliques   Int        @default(0)
-  questsDone Int        @default(0)
+  pieceDor  Int        @default(0)
   festivals  Int        @default(0)
   createdAt  DateTime   @default(now())
   favorites  Favorite[]
@@ -64,7 +61,6 @@ model Artist {
   genre       String
   description String
   imageUrl    String?
-  bounty      Int?
   featured    Boolean @default(false)
   events      Event[]
 }
@@ -79,7 +75,6 @@ model Event {
   day         String
   startTime   DateTime
   endTime     DateTime
-  prize       String?
   artistId    Int?
   artist      Artist?   @relation(fields: [artistId], references: [id])
   stageId     Int

@@ -28,17 +28,13 @@ export type AggregateUser = {
 
 export type UserAvgAggregateOutputType = {
   id: number | null
-  lutinsDor: number | null
-  reliques: number | null
-  questsDone: number | null
+  pieceDor: number | null
   festivals: number | null
 }
 
 export type UserSumAggregateOutputType = {
   id: number | null
-  lutinsDor: number | null
-  reliques: number | null
-  questsDone: number | null
+  pieceDor: number | null
   festivals: number | null
 }
 
@@ -50,9 +46,7 @@ export type UserMinAggregateOutputType = {
   password: string | null
   role: $Enums.Role | null
   rank: string | null
-  lutinsDor: number | null
-  reliques: number | null
-  questsDone: number | null
+  pieceDor: number | null
   festivals: number | null
   createdAt: Date | null
 }
@@ -65,9 +59,7 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   role: $Enums.Role | null
   rank: string | null
-  lutinsDor: number | null
-  reliques: number | null
-  questsDone: number | null
+  pieceDor: number | null
   festivals: number | null
   createdAt: Date | null
 }
@@ -80,9 +72,7 @@ export type UserCountAggregateOutputType = {
   password: number
   role: number
   rank: number
-  lutinsDor: number
-  reliques: number
-  questsDone: number
+  pieceDor: number
   festivals: number
   createdAt: number
   _all: number
@@ -91,17 +81,13 @@ export type UserCountAggregateOutputType = {
 
 export type UserAvgAggregateInputType = {
   id?: true
-  lutinsDor?: true
-  reliques?: true
-  questsDone?: true
+  pieceDor?: true
   festivals?: true
 }
 
 export type UserSumAggregateInputType = {
   id?: true
-  lutinsDor?: true
-  reliques?: true
-  questsDone?: true
+  pieceDor?: true
   festivals?: true
 }
 
@@ -113,9 +99,7 @@ export type UserMinAggregateInputType = {
   password?: true
   role?: true
   rank?: true
-  lutinsDor?: true
-  reliques?: true
-  questsDone?: true
+  pieceDor?: true
   festivals?: true
   createdAt?: true
 }
@@ -128,9 +112,7 @@ export type UserMaxAggregateInputType = {
   password?: true
   role?: true
   rank?: true
-  lutinsDor?: true
-  reliques?: true
-  questsDone?: true
+  pieceDor?: true
   festivals?: true
   createdAt?: true
 }
@@ -143,9 +125,7 @@ export type UserCountAggregateInputType = {
   password?: true
   role?: true
   rank?: true
-  lutinsDor?: true
-  reliques?: true
-  questsDone?: true
+  pieceDor?: true
   festivals?: true
   createdAt?: true
   _all?: true
@@ -245,9 +225,7 @@ export type UserGroupByOutputType = {
   password: string
   role: $Enums.Role
   rank: string
-  lutinsDor: number
-  reliques: number
-  questsDone: number
+  pieceDor: number
   festivals: number
   createdAt: Date
   _count: UserCountAggregateOutputType | null
@@ -283,9 +261,7 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   rank?: Prisma.StringFilter<"User"> | string
-  lutinsDor?: Prisma.IntFilter<"User"> | number
-  reliques?: Prisma.IntFilter<"User"> | number
-  questsDone?: Prisma.IntFilter<"User"> | number
+  pieceDor?: Prisma.IntFilter<"User"> | number
   festivals?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   favorites?: Prisma.FavoriteListRelationFilter
@@ -299,9 +275,7 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   rank?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   favorites?: Prisma.FavoriteOrderByRelationAggregateInput
@@ -318,9 +292,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   rank?: Prisma.StringFilter<"User"> | string
-  lutinsDor?: Prisma.IntFilter<"User"> | number
-  reliques?: Prisma.IntFilter<"User"> | number
-  questsDone?: Prisma.IntFilter<"User"> | number
+  pieceDor?: Prisma.IntFilter<"User"> | number
   festivals?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   favorites?: Prisma.FavoriteListRelationFilter
@@ -334,9 +306,7 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   rank?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -357,9 +327,7 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   rank?: Prisma.StringWithAggregatesFilter<"User"> | string
-  lutinsDor?: Prisma.IntWithAggregatesFilter<"User"> | number
-  reliques?: Prisma.IntWithAggregatesFilter<"User"> | number
-  questsDone?: Prisma.IntWithAggregatesFilter<"User"> | number
+  pieceDor?: Prisma.IntWithAggregatesFilter<"User"> | number
   festivals?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -371,9 +339,7 @@ export type UserCreateInput = {
   password: string
   role?: $Enums.Role
   rank?: string
-  lutinsDor?: number
-  reliques?: number
-  questsDone?: number
+  pieceDor?: number
   festivals?: number
   createdAt?: Date | string
   favorites?: Prisma.FavoriteCreateNestedManyWithoutUserInput
@@ -387,9 +353,7 @@ export type UserUncheckedCreateInput = {
   password: string
   role?: $Enums.Role
   rank?: string
-  lutinsDor?: number
-  reliques?: number
-  questsDone?: number
+  pieceDor?: number
   festivals?: number
   createdAt?: Date | string
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutUserInput
@@ -402,9 +366,7 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favorites?: Prisma.FavoriteUpdateManyWithoutUserNestedInput
@@ -418,9 +380,7 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutUserNestedInput
@@ -434,9 +394,7 @@ export type UserCreateManyInput = {
   password: string
   role?: $Enums.Role
   rank?: string
-  lutinsDor?: number
-  reliques?: number
-  questsDone?: number
+  pieceDor?: number
   festivals?: number
   createdAt?: Date | string
 }
@@ -448,9 +406,7 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -463,9 +419,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -478,18 +432,14 @@ export type UserCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   rank?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
 }
 
@@ -501,9 +451,7 @@ export type UserMaxOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   rank?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -516,18 +464,14 @@ export type UserMinOrderByAggregateInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   rank?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  lutinsDor?: Prisma.SortOrder
-  reliques?: Prisma.SortOrder
-  questsDone?: Prisma.SortOrder
+  pieceDor?: Prisma.SortOrder
   festivals?: Prisma.SortOrder
 }
 
@@ -581,9 +525,7 @@ export type UserCreateWithoutFavoritesInput = {
   password: string
   role?: $Enums.Role
   rank?: string
-  lutinsDor?: number
-  reliques?: number
-  questsDone?: number
+  pieceDor?: number
   festivals?: number
   createdAt?: Date | string
 }
@@ -596,9 +538,7 @@ export type UserUncheckedCreateWithoutFavoritesInput = {
   password: string
   role?: $Enums.Role
   rank?: string
-  lutinsDor?: number
-  reliques?: number
-  questsDone?: number
+  pieceDor?: number
   festivals?: number
   createdAt?: Date | string
 }
@@ -626,9 +566,7 @@ export type UserUpdateWithoutFavoritesInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -641,9 +579,7 @@ export type UserUncheckedUpdateWithoutFavoritesInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   rank?: Prisma.StringFieldUpdateOperationsInput | string
-  lutinsDor?: Prisma.IntFieldUpdateOperationsInput | number
-  reliques?: Prisma.IntFieldUpdateOperationsInput | number
-  questsDone?: Prisma.IntFieldUpdateOperationsInput | number
+  pieceDor?: Prisma.IntFieldUpdateOperationsInput | number
   festivals?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -687,9 +623,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   password?: boolean
   role?: boolean
   rank?: boolean
-  lutinsDor?: boolean
-  reliques?: boolean
-  questsDone?: boolean
+  pieceDor?: boolean
   festivals?: boolean
   createdAt?: boolean
   favorites?: boolean | Prisma.User$favoritesArgs<ExtArgs>
@@ -704,9 +638,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   rank?: boolean
-  lutinsDor?: boolean
-  reliques?: boolean
-  questsDone?: boolean
+  pieceDor?: boolean
   festivals?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -719,9 +651,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   password?: boolean
   role?: boolean
   rank?: boolean
-  lutinsDor?: boolean
-  reliques?: boolean
-  questsDone?: boolean
+  pieceDor?: boolean
   festivals?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -734,14 +664,12 @@ export type UserSelectScalar = {
   password?: boolean
   role?: boolean
   rank?: boolean
-  lutinsDor?: boolean
-  reliques?: boolean
-  questsDone?: boolean
+  pieceDor?: boolean
   festivals?: boolean
   createdAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "name" | "password" | "role" | "rank" | "lutinsDor" | "reliques" | "questsDone" | "festivals" | "createdAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "username" | "name" | "password" | "role" | "rank" | "pieceDor" | "festivals" | "createdAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   favorites?: boolean | Prisma.User$favoritesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -762,9 +690,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     role: $Enums.Role
     rank: string
-    lutinsDor: number
-    reliques: number
-    questsDone: number
+    pieceDor: number
     festivals: number
     createdAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1198,9 +1124,7 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly rank: Prisma.FieldRef<"User", 'String'>
-  readonly lutinsDor: Prisma.FieldRef<"User", 'Int'>
-  readonly reliques: Prisma.FieldRef<"User", 'Int'>
-  readonly questsDone: Prisma.FieldRef<"User", 'Int'>
+  readonly pieceDor: Prisma.FieldRef<"User", 'Int'>
   readonly festivals: Prisma.FieldRef<"User", 'Int'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
 }

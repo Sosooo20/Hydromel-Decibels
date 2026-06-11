@@ -13,13 +13,12 @@ const eventSchema = z.object({
     .min(2)
     .max(150)
     .regex(/^[a-z0-9-]+$/, "Lettres minuscules, chiffres et tirets uniquement"),
-  type: z.enum(["CONCERT", "ACTIVITY", "FEAST"]),
+  type: z.enum(["CONCERT", "ACTIVITY"]),
   description: z.string().min(1),
   imageUrl: z.string().url().optional().or(z.literal("")),
   day: z.string().min(2).max(50),
   startTime: z.string().min(1),
   endTime: z.string().min(1),
-  prize: z.string().optional().or(z.literal("")),
   artistId: z.string().optional(),
   stageId: z.string().min(1),
 });
@@ -34,7 +33,6 @@ function parseForm(formData: FormData) {
     day: formData.get("day"),
     startTime: formData.get("startTime"),
     endTime: formData.get("endTime"),
-    prize: formData.get("prize") || "",
     artistId: formData.get("artistId") || "",
     stageId: formData.get("stageId"),
   });
@@ -48,7 +46,6 @@ function parseForm(formData: FormData) {
     day: parsed.day,
     startTime: fromDatetimeLocal(parsed.startTime),
     endTime: fromDatetimeLocal(parsed.endTime),
-    prize: parsed.prize || null,
     artistId: parsed.artistId ? Number(parsed.artistId) : null,
     stageId: Number(parsed.stageId),
   };

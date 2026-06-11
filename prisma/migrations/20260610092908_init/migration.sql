@@ -16,9 +16,7 @@ CREATE TABLE "User" (
     "password" TEXT NOT NULL,
     "role" "Role" NOT NULL DEFAULT 'USER',
     "rank" TEXT NOT NULL DEFAULT 'Apprenti Voyageur',
-    "lutinsDor" INTEGER NOT NULL DEFAULT 0,
-    "reliques" INTEGER NOT NULL DEFAULT 0,
-    "questsDone" INTEGER NOT NULL DEFAULT 0,
+    "pieceDor" INTEGER NOT NULL DEFAULT 0,
     "festivals" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -42,7 +40,6 @@ CREATE TABLE "Artist" (
     "genre" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "imageUrl" TEXT,
-    "bounty" INTEGER,
     "featured" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Artist_pkey" PRIMARY KEY ("id")
@@ -59,7 +56,6 @@ CREATE TABLE "Event" (
     "day" TEXT NOT NULL,
     "startTime" TIMESTAMP(3) NOT NULL,
     "endTime" TIMESTAMP(3) NOT NULL,
-    "prize" TEXT,
     "artistId" INTEGER,
     "stageId" INTEGER NOT NULL,
 

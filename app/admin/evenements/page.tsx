@@ -19,7 +19,6 @@ import {
 const TYPE_LABELS: Record<string, string> = {
   CONCERT: "Concert",
   ACTIVITY: "Activité",
-  FEAST: "Festin",
 };
 
 export default async function AdminEvenementsPage() {

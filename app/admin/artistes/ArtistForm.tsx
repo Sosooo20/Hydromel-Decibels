@@ -88,32 +88,15 @@ export default function ArtistForm({
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="bounty" className={labelClass}>
-            Prime (Lutins d&apos;Or)
-          </label>
-          <input
-            id="bounty"
-            name="bounty"
-            type="number"
-            min={0}
-            placeholder="1500"
-            defaultValue={artist?.bounty ?? ""}
-            className={inputClass}
-          />
-        </div>
-
-        <label className="font-heading mt-6 flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-brown-mid">
-          <input
-            name="featured"
-            type="checkbox"
-            defaultChecked={artist?.featured}
-            className="h-4 w-4 accent-gold"
-          />
-          Avis de Recherche (mis en avant)
-        </label>
-      </div>
+      <label className="font-heading flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-brown-mid">
+        <input
+          name="featured"
+          type="checkbox"
+          defaultChecked={artist?.featured}
+          className="h-4 w-4 accent-gold"
+        />
+        Avis de Recherche (mis en avant)
+      </label>
 
       <div className="flex items-center gap-3">
         <button type="submit" className={buttonClass}>
