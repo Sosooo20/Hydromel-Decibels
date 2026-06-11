@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* Profile avatar — always visible */}
         <Link
-          href="/"
+          href="/login"
           aria-label="Mon profil"
           className="w-8 h-8 rounded-full bg-gold flex items-center justify-center flex-shrink-0"
         >
