@@ -53,7 +53,7 @@ export default async function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-heading text-[11px] tracking-[0.15em] uppercase text-brown hover:text-gold transition-colors no-underline"
+              className="font-heading text-[11px] tracking-[0.15em] uppercase text-black hover:text-gold transition-colors no-underline"
             >
               {link.label}
             </Link>

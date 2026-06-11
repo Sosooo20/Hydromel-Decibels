@@ -10,14 +10,21 @@ export default async function EvenementsPage() {
   ]);
 
   return (
-    <div className="events-page">
-      <div className="container-page">
+    <div className="events-page"
+     style={{
+        backgroundImage: "url('/parchemin-bg.avif')",
+        backgroundSize: "contain",
+        backgroundPosition: "center",
+    
+      }}>
+      <div className="container-page"
+      >
 
         {/* En-tête */}
         <div className="events-page__header">
           <div className="section-label">
-            <div className="section-label__line" />
-            <span className="section-label__text">La Programmation</span>
+            <div className="section-label__line bg-black" />
+            <span className="section-label__text text-black">La Programmation</span>
           </div>
           <h1 className="events-page__title">Les Ménestrels du Royaume</h1>
           <p className="events-page__count">
