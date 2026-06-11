@@ -1,11 +1,11 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { deleteStage } from "./actions";
-import { IconPencil, IconTrash } from "../icons";
+import DeleteButton from "../DeleteButton";
+import { IconPencil } from "../icons";
 import {
   buttonClass,
   iconButtonClass,
-  iconDangerButtonClass,
   tableClass,
   tableWrapperClass,
   tdClass,
@@ -63,14 +63,9 @@ export default async function AdminScenesPage() {
                         <IconPencil />
                       </Link>
                       <form action={deleteStage.bind(null, stage.id)}>
-                        <button
-                          type="submit"
-                          aria-label="Supprimer"
-                          title="Supprimer"
-                          className={iconDangerButtonClass}
-                        >
-                          <IconTrash />
-                        </button>
+                        <DeleteButton
+                          confirmMessage={`Supprimer la scène « ${stage.name} » ?`}
+                        />
                       </form>
                     </div>
                   </td>

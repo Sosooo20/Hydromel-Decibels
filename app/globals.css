@@ -61,7 +61,11 @@ h3 {
   font-weight: 500;
 }
 
-a {
+a,
+a:visited,
+a:hover,
+a:focus,
+a:active {
   color: var(--color-gold);
   text-decoration: none;
 }

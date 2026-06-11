@@ -51,12 +51,18 @@ export default async function ProfilPage() {
         <h1 className="font-display mb-1 text-center text-2xl font-bold text-brown md:text-3xl">
           {user.name ?? user.username}
         </h1>
-        <p className="font-heading mb-8 text-center text-[11px] uppercase tracking-[0.2em] text-brown-mid">
+        <div style={{ 
+          backgroundImage: "url('/parchemin-titre.png')",
+        backgroundSize: "70%",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+         }}> <p className="font-heading mb-8 text-center text-[11px] uppercase tracking-[0.2em] text-brown-mid">
           {user.rank}
-        </p>
+        </p></div>
+       
 
         {/* Stats */}
-        <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-2">
           {stats.map((stat) => (
             <div
               key={stat.label}
@@ -102,7 +108,7 @@ export default async function ProfilPage() {
         >
           <button
             type="submit"
-            className="font-heading w-full rounded-full border border-parchment-dark px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-brown-mid transition-colors hover:border-gold hover:text-brown"
+            className="font-heading w-full rounded-full border border-parchment-dark bg-parchment-light px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-brown-mid transition-colors hover:border-gold hover:text-brown"
           >
             Se déconnecter
           </button>

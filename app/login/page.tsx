@@ -96,7 +96,13 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="flex min-h-[70vh] items-center justify-center px-4 py-12">
+    <section className="flex min-h-[70vh] items-center justify-center px-4 py-12"
+     style={{
+        backgroundImage: "url('/parchemin-bg.avif')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}>
       <div className="w-full max-w-md rounded-2xl border border-parchment-dark bg-parchment-light p-8">
         <div className="mb-6 text-center">
           <div className="mb-3 flex items-center justify-center gap-3">

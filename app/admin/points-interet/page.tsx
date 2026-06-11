@@ -2,11 +2,11 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { deletePoi } from "./actions";
 import { CATEGORY_LABELS } from "./labels";
-import { IconPencil, IconTrash } from "../icons";
+import DeleteButton from "../DeleteButton";
+import { IconPencil } from "../icons";
 import {
   buttonClass,
   iconButtonClass,
-  iconDangerButtonClass,
   tableClass,
   tableWrapperClass,
   tdClass,
@@ -68,14 +68,9 @@ export default async function AdminPointsInteretPage() {
                         <IconPencil />
                       </Link>
                       <form action={deletePoi.bind(null, point.id)}>
-                        <button
-                          type="submit"
-                          aria-label="Supprimer"
-                          title="Supprimer"
-                          className={iconDangerButtonClass}
-                        >
-                          <IconTrash />
-                        </button>
+                        <DeleteButton
+                          confirmMessage={`Supprimer le point d'intérêt « ${point.name} » ?`}
+                        />
                       </form>
                     </div>
                   </td>

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { deleteArtist } from "./actions";
-import { IconPencil, IconTrash } from "../icons";
+import DeleteButton from "../DeleteButton";
+import { IconPencil } from "../icons";
 import {
   badgeClass,
   buttonClass,
   iconButtonClass,
-  iconDangerButtonClass,
   tableClass,
   tableWrapperClass,
   tdClass,
@@ -65,14 +65,9 @@ export default async function AdminArtistesPage() {
                         <IconPencil />
                       </Link>
                       <form action={deleteArtist.bind(null, artist.id)}>
-                        <button
-                          type="submit"
-                          aria-label="Supprimer"
-                          title="Supprimer"
-                          className={iconDangerButtonClass}
-                        >
-                          <IconTrash />
-                        </button>
+                        <DeleteButton
+                          confirmMessage={`Supprimer l'artiste « ${artist.name} » ?`}
+                        />
                       </form>
                     </div>
                   </td>

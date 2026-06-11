@@ -2,11 +2,11 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { formatTimeRange } from "@/lib/format";
 import { deleteEvent } from "./actions";
-import { IconPencil, IconTrash } from "../icons";
+import DeleteButton from "../DeleteButton";
+import { IconPencil } from "../icons";
 import {
   buttonClass,
   iconButtonClass,
-  iconDangerButtonClass,
   tableClass,
   tableWrapperClass,
   tdClass,
@@ -81,14 +81,9 @@ export default async function AdminEvenementsPage() {
                         <IconPencil />
                       </Link>
                       <form action={deleteEvent.bind(null, event.id)}>
-                        <button
-                          type="submit"
-                          aria-label="Supprimer"
-                          title="Supprimer"
-                          className={iconDangerButtonClass}
-                        >
-                          <IconTrash />
-                        </button>
+                        <DeleteButton
+                          confirmMessage={`Supprimer l'événement « ${event.title} » ?`}
+                        />
                       </form>
                     </div>
                   </td>

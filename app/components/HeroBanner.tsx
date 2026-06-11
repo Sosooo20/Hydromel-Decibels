@@ -54,7 +54,7 @@ export default function HeroBanner() {
         {/* Boutons CTA */}
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
           <Link
-            href="/evenement"
+            href="/login"
             className="font-heading text-[11px] tracking-[0.25em] uppercase px-10 py-4 rounded-full transition-opacity hover:opacity-80 no-underline"
             style={{ background: "var(--color-brown)", color: "var(--color-parchment-light)" }}
           >

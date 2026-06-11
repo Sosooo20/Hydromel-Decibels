@@ -2,7 +2,13 @@ import AdminSidebar from "./AdminSidebar";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="py-8">
+    <section className="py-8"
+     style={{
+        backgroundImage: "url('/parchemin-bg.avif')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}>
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-6 flex items-center justify-center gap-3">
           <div className="h-px w-8 bg-gold" />
