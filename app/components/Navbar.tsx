@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { auth } from "@/lib/auth";
 
 function LogoEmblem() {
   return (
@@ -16,12 +17,17 @@ function LogoEmblem() {
 }
 
 const navLinks = [
-  { label: "Accueil", href: "/" },
-  { label: "Événements", href: "/evenement" },
+  { label: "Légende", href: "/" },
+  { label: "Artistes", href: "/evenement" },
+  { label: "Festin", href: "/festin" },
   { label: "Carte", href: "/carte" },
 ];
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth();
+  const profileHref = session?.user ? "/profil" : "/login";
+  const isAdmin = session?.user?.role === "ADMIN";
+
   return (
     <header className="sticky top-0 z-40 bg-parchment-light border-b border-parchment-dark">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -62,16 +68,40 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Profile avatar — always visible */}
-        <Link
-          href="/login"
-          aria-label="Mon profil"
-          className="w-8 h-8 rounded-full bg-gold flex items-center justify-center flex-shrink-0"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-forest)">
-            <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 9a7 7 0 0 1 14 0H5z" />
-          </svg>
-        </Link>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          {/* Accès admin — visible uniquement pour le rôle ADMIN */}
+          {isAdmin && (
+            <Link
+              href="/admin"
+              aria-label="Salle du Conseil (admin)"
+              className="w-8 h-8 rounded-full bg-forest flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-gold)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            </Link>
+          )}
+
+          {/* Profile avatar — always visible */}
+          <Link
+            href={profileHref}
+            aria-label="Mon profil"
+            className="w-8 h-8 rounded-full bg-gold flex items-center justify-center flex-shrink-0"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--color-forest)">
+              <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 9a7 7 0 0 1 14 0H5z" />
+            </svg>
+          </Link>
+        </div>
 
       </div>
     </header>

@@ -1,3 +1,8 @@
+import Link from "next/link";
+import CountdownTimer from "./CountdownTimer";
+
+const FESTIVAL_START = "2026-10-16T14:00:00+02:00";
+
 export default function HeroBanner() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[75vh] text-center overflow-hidden">
@@ -35,15 +40,26 @@ export default function HeroBanner() {
           &ldquo;Quand le brouillard de l&apos;Aude rencontre l&apos;acier des guitares et la douceur de l&apos;hydromel.&rdquo;
         </p>
 
+        {/* Compte à rebours */}
+        <div className="mt-2 flex flex-col items-center gap-2">
+          <span
+            className="font-heading text-[10px] tracking-[0.3em] uppercase"
+            style={{ color: "var(--color-gold)" }}
+          >
+            Le Royaume s&apos;éveille dans
+          </span>
+          <CountdownTimer targetDate={FESTIVAL_START} />
+        </div>
+
         {/* Boutons CTA */}
         <div className="flex flex-col sm:flex-row gap-4 mt-4">
-          <a
+          <Link
             href="/evenement"
-            className="font-heading text-[11px] tracking-[0.25em] uppercase px-10 py-4 rounded-full transition-opacity hover:opacity-80"
+            className="font-heading text-[11px] tracking-[0.25em] uppercase px-10 py-4 rounded-full transition-opacity hover:opacity-80 no-underline"
             style={{ background: "var(--color-brown)", color: "var(--color-parchment-light)" }}
           >
             Rejoindre l&apos;Aventure &raquo;
-          </a>
+          </Link>
           <a
             href="#"
             className="font-heading text-[11px] tracking-[0.25em] uppercase px-10 py-4 rounded-full transition-opacity hover:opacity-80"

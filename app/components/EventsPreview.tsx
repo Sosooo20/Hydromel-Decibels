@@ -1,30 +1,10 @@
 import Link from "next/link";
+import type { Artist, Event, Stage } from "@/app/generated/prisma/client";
+import { formatTimeRange } from "@/lib/format";
 
-const events = [
-  {
-    id: 1,
-    genre: "Nordic Folk Metal",
-    name: "Echoes of Valhalla",
-    description: "A storm of strings and thunder from the frozen peaks of the north.",
-    time: "14:00 – 15:30",
-  },
-  {
-    id: 2,
-    genre: "Celtic Tavern Punk",
-    name: "The Barley Bards",
-    description: "Rhythmic ballads that turn every stranger into a leather-clad brother.",
-    time: "16:30 – 18:00",
-  },
-  {
-    id: 3,
-    genre: "Epic Power Metal",
-    name: "Iron Citadel",
-    description: "The walls shall tremble and the hallowed shall bow before this citadel.",
-    time: "20:00 – 22:00",
-  },
-];
+type EventWithRelations = Event & { artist: Artist | null; stage: Stage };
 
-export default function EventsPreview() {
+export default function EventsPreview({ events }: { events: EventWithRelations[] }) {
   return (
     <section style={{ background: "var(--color-parchment)", padding: "5rem 0" }}>
       <div style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 1.5rem" }}>
@@ -56,18 +36,23 @@ export default function EventsPreview() {
           </h2>
         </div>
 
-        {/* Grille de 3 cartes */}
+        {/* Grille de cartes */}
         <div className="row g-4">
           {events.map((event) => (
             <div key={event.id} className="col-12 col-md-4">
-              <div style={{
-                borderRadius: "1rem",
-                overflow: "hidden",
-                background: "var(--color-parchment-light)",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}>
+              <Link
+                href={`/evenement/${event.slug}`}
+                style={{
+                  borderRadius: "1rem",
+                  overflow: "hidden",
+                  background: "var(--color-parchment-light)",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
 
                 {/* Emplacement image — remplacer par <Image fill> next/image */}
                 <div style={{
@@ -92,7 +77,7 @@ export default function EventsPreview() {
                 {/* Contenu */}
                 <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
 
-                  {/* Tag genre */}
+                  {/* Tag genre / scène */}
                   <span style={{
                     alignSelf: "flex-start",
                     background: "var(--color-parchment-dark)",
@@ -105,7 +90,7 @@ export default function EventsPreview() {
                     padding: "0.25rem 0.75rem",
                     borderRadius: "999px",
                   }}>
-                    {event.genre}
+                    {event.artist?.genre ?? event.stage.name}
                   </span>
 
                   {/* Nom de l'événement */}
@@ -116,7 +101,7 @@ export default function EventsPreview() {
                     fontWeight: 700,
                     margin: 0,
                   }}>
-                    {event.name}
+                    {event.title}
                   </h3>
 
                   {/* Description */}
@@ -147,11 +132,11 @@ export default function EventsPreview() {
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
-                    {event.time}
+                    {event.day} · {formatTimeRange(event.startTime, event.endTime)}
                   </div>
 
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
