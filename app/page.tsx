@@ -159,6 +159,7 @@ export default async function Home() {
             {/* Événements */}
             {evenements.slice(0, 1).map((event) => (
               <div key={event.id} className="col-12 col-md-4">
+                <Link href={`/evenement/${event.id}`} className="event-card__link">
                 <div className="preview-card">
                   <div className="preview-card__image" style={{ position: "relative", overflow: "hidden" }}>
                     {event.artist?.imageUrl ? (
@@ -195,6 +196,7 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             ))}
 
@@ -233,6 +235,7 @@ export default async function Home() {
               {/* Activités */}
               {activities.slice(0, 1).map((activite) => (
                   <div key={activite.id} className="col-12 col-md-4">
+                      <Link href={`/activite/${activite.id}`} className="event-card__link">
                       <div className="preview-card">
                           <div className="preview-card__image" style={{ position: "relative", overflow: "hidden" }}>
                             {activite.imageUrl ? (
@@ -257,6 +260,7 @@ export default async function Home() {
                             )}
                           </div>
                       </div>
+                      </Link>
                   </div>
               ))}
 

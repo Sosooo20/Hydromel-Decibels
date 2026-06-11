@@ -86,9 +86,7 @@ export default function Footer() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
               {legalLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} style={footerLinkStyle}>
-                    {link.label}
-                  </Link>
+                  <span style={footerLinkStyle}>{link.label}</span>
                 </li>
               ))}
             </ul>
