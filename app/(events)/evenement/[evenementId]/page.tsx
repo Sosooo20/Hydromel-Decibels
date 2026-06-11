@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import prisma from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import FavoriteButton from "./FavoriteButton";
 
 export default async function EvenementDetail({
   params,
@@ -16,6 +18,15 @@ export default async function EvenementDetail({
   });
 
   if (!evenement) notFound();
+
+  const session = await auth();
+  let isFavorite = false;
+  if (session?.user) {
+    const favorite = await prisma.favorite.findUnique({
+      where: { userId_eventId: { userId: Number(session.user.id), eventId: evenement.id } },
+    });
+    isFavorite = !!favorite;
+  }
 
   const typeLabel = evenement.type === "CONCERT" ? "Concert" : "Activité";
 
@@ -106,17 +117,27 @@ export default async function EvenementDetail({
 
           {/* CTA */}
           <div className="detail-cta">
-            <button className="detail-cta__btn" disabled>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="8.5" cy="7" r="4" />
-                <line x1="20" y1="8" x2="20" y2="14" />
-                <line x1="23" y1="11" x2="17" y2="11" />
-              </svg>
-              S&apos;inscrire à cet événement
-            </button>
-            <p className="detail-cta__note">Les inscriptions ouvriront bientôt</p>
+            {session?.user ? (
+              <FavoriteButton eventId={evenement.id} initialFavorite={isFavorite} />
+            ) : (
+              <Link href="/login" className="detail-cta__btn detail-cta__btn--active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <line x1="20" y1="8" x2="20" y2="14" />
+                  <line x1="23" y1="11" x2="17" y2="11" />
+                </svg>
+                S&apos;inscrire à cet événement
+              </Link>
+            )}
+            <p className="detail-cta__note">
+              {session?.user
+                ? isFavorite
+                  ? "Cet événement fait partie de vos quêtes"
+                  : "Ajoutez cet événement à vos quêtes favorites"
+                : "Connectez-vous pour ajouter cet événement à vos favoris"}
+            </p>
           </div>
 
         </div>
