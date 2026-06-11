@@ -43,6 +43,16 @@ export type Event = Prisma.EventModel
  */
 export type Favorite = Prisma.FavoriteModel
 /**
+ * Model Stand
+ * 
+ */
+export type Stand = Prisma.StandModel
+/**
+ * Model Activity
+ * 
+ */
+export type Activity = Prisma.ActivityModel
+/**
  * Model PointOfInterest
  * 
  */

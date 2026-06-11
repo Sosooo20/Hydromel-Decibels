@@ -211,6 +211,23 @@ export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
 }
 
+export type EnumStandCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.StandCategory | Prisma.EnumStandCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel> | $Enums.StandCategory
+}
+
+export type EnumStandCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.StandCategory | Prisma.EnumStandCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStandCategoryWithAggregatesFilter<$PrismaModel> | $Enums.StandCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel>
+}
+
 export type EnumPoiCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.PoiCategory | Prisma.EnumPoiCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.PoiCategory[] | Prisma.ListEnumPoiCategoryFieldRefInput<$PrismaModel>
@@ -463,6 +480,23 @@ export type NestedFloatNullableFilter<$PrismaModel = never> = {
   gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
+}
+
+export type NestedEnumStandCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.StandCategory | Prisma.EnumStandCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel> | $Enums.StandCategory
+}
+
+export type NestedEnumStandCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.StandCategory | Prisma.EnumStandCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.StandCategory[] | Prisma.ListEnumStandCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumStandCategoryWithAggregatesFilter<$PrismaModel> | $Enums.StandCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumStandCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumPoiCategoryFilter<$PrismaModel = never> = {
