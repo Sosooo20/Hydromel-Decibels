@@ -86,7 +86,7 @@ export default function MapView({ points }: { points: PointOfInterest[] }) {
         {(Object.keys(CATEGORY_META) as PoiCategory[]).map((category) => {
           const meta = CATEGORY_META[category];
           return (
-            <div key={category} className="font-heading flex items-center gap-2 text-xs text-brown-mid">
+            <div key={category} className="font-heading flex items-center gap-2 text-xs text-black-mid">
               <span
                 className="flex h-6 w-6 items-center justify-center rounded-full text-xs"
                 style={{ background: meta.color }}

@@ -11,7 +11,7 @@ function LogoEmblem() {
 }
 
 const navLinks = [
-  { label: "Evénements", href: "/evenement" },
+  { label: "Programmation", href: "/evenement" },
   { label: "Carte", href: "/carte" },
 ];
 

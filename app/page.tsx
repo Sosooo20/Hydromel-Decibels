@@ -1,6 +1,8 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
+import CountdownTimer from "./components/CountdownTimer";
+const FESTIVAL_START = "2026-10-16T14:00:00+02:00";
 
 export default async function Home() {
   const [evenements, stands, activities] = await Promise.all([
@@ -19,10 +21,10 @@ export default async function Home() {
         <div className="hero__bg-overlay" />
 
         <div className="hero__content">
-          <div className="hero__label">
-            <span>Hydromel et Décibels</span>
+          <div className="">
+            <Image src="/logo.png" width={250} height={250} alt="logo hydromel et decibel"/>
           </div>
-
+          
           <h1
             className="font-decorative text-5xl md:text-7xl lg:text-8xl font-bold leading-tight"
             style={{ color: "var(--color-parchment-light)", fontFamily: "var(--font-cinzel-decorative, Georgia, serif)" }}
@@ -34,7 +36,17 @@ export default async function Home() {
             &ldquo;Quand le brouillard de l&apos;Aude rencontre l&apos;acier des guitares
             et la douceur de l&apos;hydromel.&rdquo;
           </p>
-
+          {/* Compte à rebours */}
+                  <div className="mt-2 flex flex-col items-center gap-2">
+                    <span
+                      className="font-heading text-[10px] tracking-[0.3em] uppercase"
+                      style={{ color: "white" }}
+                    >
+                      Le Royaume s&apos;éveille dans
+                    </span>
+                    <CountdownTimer targetDate={FESTIVAL_START} />
+                  </div>
+         
           <div className="hero__cta">
             <Link href="/evenement" className="btn-hero-primary">
               Rejoindre l&apos;Aventure &raquo;
