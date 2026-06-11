@@ -24,7 +24,7 @@ export default function AdminSidebar() {
           <Link
             key={href}
             href={href}
-            className={`font-heading flex flex-shrink-0 items-center gap-3 rounded-lg border-l-4 px-3 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors ${
+            className={`font-heading flex flex-shrink-0 items-center gap-3 rounded-lg border-l-4 px-3 py-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] transition-colors  ${
               active
                 ? "border-gold bg-forest text-parchment-light"
                 : "border-transparent text-brown-mid hover:border-gold/40 hover:bg-parchment hover:text-brown"

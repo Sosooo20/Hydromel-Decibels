@@ -48,7 +48,7 @@ export default async function Home() {
                   </div>
          
           <div className="hero__cta">
-            <Link href="/evenement" className="btn-hero-primary">
+            <Link href="/login" className="btn-hero-primary">
               Rejoindre l&apos;Aventure &raquo;
             </Link>
             <Link href="#" className="btn-hero-outline">
