@@ -8,7 +8,7 @@ export async function GET(
   const { evenementsId } = await params;
 
   const evenement = await prisma.event.findUnique({
-    where: { id: evenementsId },
+    where: { id: Number(evenementsId) },
   });
 
   if (!evenement) {

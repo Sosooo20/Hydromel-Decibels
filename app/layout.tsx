@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
+import ServiceWorkerRegister from "@/app/components/ServiceWorkerRegister";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Navbar />
         {/* pb-16 only on mobile to account for fixed bottom nav */}
+        <ServiceWorkerRegister/>
         <main className="flex-1 pb-16 md:pb-0">{children}</main>
         <Footer />
         <BottomNav />
