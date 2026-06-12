@@ -24,18 +24,6 @@ export default async function Navbar() {
     <header className="sticky top-0 z-40 bg-parchment-light border-b border-parchment-dark">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
 
-        {/* Mobile only — hamburger */}
-        <button className="md:hidden text-brown flex-shrink-0" aria-label="Menu">
-          <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
-            <path
-              d="M1 1h20M1 9h20M1 17h20"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 no-underline">
           {/* Emblem visible on desktop only */}

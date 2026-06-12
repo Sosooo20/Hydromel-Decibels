@@ -239,70 +239,99 @@ async function main() {
     },
   });
 
-  // ─── Stands — Ventes ──────────────────────────────────────────────────────
-  await prisma.stand.deleteMany();
-  await prisma.stand.createMany({
-    data: [
-      {
-        name: "Vente de verres de vin",
-        category: "VENTES",
-        imageUrl: "/ventes-vins.jpg",
-        openTime: "11:00",
-        closeTime: "22:00",
-      },
-      {
-        name: "Vente de charcuterie",
-        category: "VENTES",
-        imageUrl: "/charcuterie.jpg",
-        description: "Saucisson, pâtés, rillettes, rosettes",
-        openTime: "11:00",
-        closeTime: "20:00",
-      },
-      {
-        name: "Vente de verres de bières",
-        category: "VENTES",
-        imageUrl: "/ventes-bieres.jpeg",
-        openTime: "11:00",
-        closeTime: "22:00",
-      },
-      {
-        name: "Bar à hydromel",
-        category: "VENTES",
-        imageUrl: "/hydromel.jpg",
-        description: "Hydromels artisanaux de la région, servis frais ou chauds",
-        openTime: "11:00",
-        closeTime: "23:00",
-      },
-      {
-        name: "Saucisses",
-        category: "REPAS",
-        imageUrl: "/chipolatas-barbecue.jpg",
-        openTime: "12:00",
-        closeTime: "21:00",
-      },
-      {
-        name: "Merguez",
-        category: "REPAS",
-        imageUrl: "/merguez-barbecue.webp",
-        openTime: "12:00",
-        closeTime: "21:00",
-      },
-      {
-        name: "Frites",
-        category: "REPAS",
-        imageUrl: "/frites.webp",
-        openTime: "12:00",
-        closeTime: "21:00",
-      },
-      {
-        name: "Boissons",
-        category: "REPAS",
-        imageUrl: "/boissons.jpg",
-        openTime: "11:00",
-        closeTime: "22:00",
-      },
-    ],
-  });
+  // ─── Stands → Points d'intérêt ───────────────────────────────────────────
+  const standPois: {
+    name: string;
+    category: PoiCategory;
+    description: string;
+    imageUrl: string;
+    lat: number;
+    lng: number;
+  }[] = [
+    {
+      name: "Vente de verres de vin",
+      category: PoiCategory.DRINK,
+      description: "Ouvert 11h–22h. Sélection de vins rouges, blancs et rosés des vignobles occitans. Verre de vin : 3 €. Bouteille à emporter : à partir de 8 €. Dégustation découverte (3 verres) : 8 €.",
+      imageUrl: "/ventes-vins.jpg",
+      lat: 43.1964,
+      lng: 2.3662,
+    },
+    {
+      name: "Vente de charcuterie",
+      category: PoiCategory.SHOP,
+      description: "Ouvert 11h–20h. Spécialités charcutières artisanales du Languedoc. Saucisson sec : 4 €/100 g. Pâté campagnard : 3 € la part. Rillettes maison : 3,50 €. Rosette : 5 €/100 g. Plateau découverte (4 produits) : 14 €.",
+      imageUrl: "/charcuterie.jpg",
+      lat: 43.1962,
+      lng: 2.3660,
+    },
+    {
+      name: "Vente de fromages",
+      category: PoiCategory.SHOP,
+      description: "Ouvert 11h–20h. Fromages affinés de la région occitane. Roquefort AOP : 5 €/100 g. Tome des Pyrénées : 4 €/100 g. Pélardon (chèvre) : 3 € la pièce. Cabécou : 2,50 € la pièce. Plateau dégustation (4 fromages + pain) : 12 €.",
+      imageUrl: "/fromages.jpg",
+      lat: 43.1961,
+      lng: 2.3663,
+    },
+    {
+      name: "Vente de verres de bières",
+      category: PoiCategory.DRINK,
+      description: "Ouvert 11h–22h. Bières artisanales brassées pour le festival. Blonde légère : 3 €. Ambrée houblonnée : 3,50 €. Brune aux épices médiévales : 4 €. Bière sans alcool : 2,50 €. Formule 3 bières au choix : 9 €.",
+      imageUrl: "/ventes-bieres.jpeg",
+      lat: 43.1963,
+      lng: 2.3657,
+    },
+    {
+      name: "Bar à hydromel",
+      category: PoiCategory.DRINK,
+      description: "Ouvert 11h–23h. Hydromels artisanaux de la région, servis frais ou chauds. Hydromel classique (verre) : 4 €. Hydromel aux fruits rouges : 4,50 €. Hydromel épicé chaud : 5 €. Chope souvenir du festival : 12 € (inclut une première chope).",
+      imageUrl: "/hydromel.jpg",
+      lat: 43.1966,
+      lng: 2.3658,
+    },
+    {
+      name: "Saucisses",
+      category: PoiCategory.FOOD,
+      description: "Ouvert 12h–21h. Saucisses et chipolatas grillées au feu de bois. Chipolata dans son pain : 3,50 €. Saucisse de Toulouse : 4 €. Formule saucisse + boisson : 6 €. Servies avec moutarde, ketchup et oignons caramélisés.",
+      imageUrl: "/chipolatas-barbecue.jpg",
+      lat: 43.1968,
+      lng: 2.3663,
+    },
+    {
+      name: "Merguez",
+      category: PoiCategory.FOOD,
+      description: "Ouvert 12h–21h. Merguez artisanales grillées à la braise, épicées selon la tradition. Merguez dans son pain : 3,50 €. Duo de merguez avec pain et salade : 6 €. Formule merguez + frites + boisson : 9 €.",
+      imageUrl: "/merguez-barbecue.webp",
+      lat: 43.1969,
+      lng: 2.3660,
+    },
+    {
+      name: "Frites",
+      category: PoiCategory.FOOD,
+      description: "Ouvert 12h–21h. Frites fraîches coupées à la main, cuites dans l'huile de tournesol. Portion classique : 3 €. Grande portion : 4,50 €. Frites au fromage fondu : 5 €. Frites au lard et oignons : 5,50 €. Sauce au choix incluse.",
+      imageUrl: "/frites.webp",
+      lat: 43.1970,
+      lng: 2.3658,
+    },
+    {
+      name: "Boissons",
+      category: PoiCategory.DRINK,
+      description: "Ouvert 11h–22h. Boissons fraîches et chaudes pour tous les festivaliers. Eau minérale : 1,50 €. Soda : 2,50 €. Jus de fruits : 2,50 €. Café / thé : 2 €. Chocolat chaud épicé : 3 €. Limonade artisanale : 3 €.",
+      imageUrl: "/boissons.jpg",
+      lat: 43.1967,
+      lng: 2.3655,
+    },
+  ];
+
+  for (const poi of standPois) {
+    const existing = await prisma.pointOfInterest.findFirst({
+      where: { name: poi.name },
+    });
+    if (!existing) {
+      await prisma.pointOfInterest.create({ data: poi });
+    } else {
+      await prisma.pointOfInterest.update({ where: { id: existing.id }, data: poi });
+    }
+  }
 
   // ─── Activités ────────────────────────────────────────────────────────────
   await prisma.activity.deleteMany();
@@ -353,6 +382,7 @@ async function main() {
     name: string;
     category: PoiCategory;
     description: string;
+    imageUrl?: string;
     lat: number;
     lng: number;
   }[] = [
@@ -385,23 +415,10 @@ async function main() {
       lng: 2.3676,
     },
     {
-      name: "Stands des Lices Hautes",
-      category: PoiCategory.FOOD,
-      description: "Mets d'époque cuisinés au feu de bois.",
-      lat: 43.1965,
-      lng: 2.366,
-    },
-    {
-      name: "Fontaine d'Hydromel",
-      category: PoiCategory.DRINK,
-      description: "Hydromel artisanal brassé par la Guilde des Brasseurs.",
-      lat: 43.1975,
-      lng: 2.3645,
-    },
-    {
       name: "La Boutique du Forgeur",
       category: PoiCategory.SHOP,
       description: "Tuniques, chopes et reliques gravées à l'effigie du royaume.",
+      imageUrl: "/boutique.jpg",
       lat: 43.196,
       lng: 2.363,
     },
@@ -434,6 +451,8 @@ async function main() {
     });
     if (!existing) {
       await prisma.pointOfInterest.create({ data: poi });
+    } else {
+      await prisma.pointOfInterest.update({ where: { id: existing.id }, data: poi });
     }
   }
 

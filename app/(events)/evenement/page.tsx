@@ -5,7 +5,10 @@ import prisma from "@/lib/prisma";
 export default async function EvenementsPage() {
   const [artistes, stands, activities] = await Promise.all([
     prisma.artist.findMany({ orderBy: { name: "asc" }, include: { events: { take: 1 } } }),
-    prisma.stand.findMany({ orderBy: { name: "asc" } }),
+    prisma.pointOfInterest.findMany({
+      where: { category: { in: ["FOOD", "DRINK", "SHOP"] } },
+      orderBy: { name: "asc" },
+    }),
     prisma.activity.findMany({ orderBy: { name: "asc" } }),
   ]);
 
@@ -81,39 +84,34 @@ export default async function EvenementsPage() {
           </p>
         ) : (
           <div className="row g-4">
-            {stands.map((stand) => (
-              <div key={stand.id} className="col-12 col-md-6 col-lg-4">
-                <div className="event-card">
+            {stands.map((stand) => {
+              const categoryLabel =
+                stand.category === "FOOD" ? "Nourriture" :
+                stand.category === "DRINK" ? "Boissons" : "Boutique";
+              return (
+                <div key={stand.id} className="col-12 col-md-6 col-lg-4">
+                  <Link href={`/stand/${stand.id}`} className="event-card__link">
+                  <div className="event-card">
 
-                  <div className="event-card__image" style={{ position: "relative", overflow: "hidden" }}>
-                    {stand.imageUrl ? (
-                      <Image src={stand.imageUrl} alt={stand.name} fill style={{ objectFit: "cover" }} />
-                    ) : (
-                      <span className="event-card__image-placeholder">Image ici</span>
-                    )}
-                    {stand.openTime && stand.closeTime && (
-                      <div className="event-card__time-badge">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                        {stand.openTime} – {stand.closeTime}
-                      </div>
-                    )}
+                    <div className="event-card__image" style={{ position: "relative", overflow: "hidden" }}>
+                      {stand.imageUrl ? (
+                        <Image src={stand.imageUrl} alt={stand.name} fill style={{ objectFit: "cover" }} />
+                      ) : (
+                        <span className="event-card__image-placeholder">Image ici</span>
+                      )}
+                    </div>
+
+                    <div className="event-card__body">
+                      <span className="preview-tag">{categoryLabel}</span>
+                      <h2 className="event-card__title">{stand.name}</h2>
+                      <p className="event-card__description">{stand.description}</p>
+                    </div>
+
                   </div>
-
-                  <div className="event-card__body">
-                    <span className="preview-tag">
-                      {stand.category === "VENTES" ? "Ventes" : "Repas"}
-                    </span>
-                    <h2 className="event-card__title">{stand.name}</h2>
-                    <p className="event-card__description">{stand.description}</p>
-                  </div>
-
+                  </Link>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 

@@ -8,7 +8,10 @@ const FESTIVAL_START = "2026-10-16T14:00:00+02:00";
 export default async function Home() {
   const [evenements, stands, activities] = await Promise.all([
     prisma.event.findMany({ orderBy: { startTime: "asc" }, include: { artist: true } }),
-    prisma.stand.findMany({ orderBy: { name: "asc" } }),
+    prisma.pointOfInterest.findMany({
+      where: { category: { in: ["FOOD", "DRINK", "SHOP"] } },
+      orderBy: { name: "asc" },
+    }),
     prisma.activity.findMany({ orderBy: { name: "asc" } }),
   ]);
 
@@ -200,36 +203,31 @@ export default async function Home() {
             ))}
 
             {/* Stands */}
-            {stands.slice(0, 1).map((stand) => (
-              <div key={stand.id} className="col-12 col-md-4">
-                <div className="preview-card">
-                  <div className="preview-card__image" style={{ position: "relative", overflow: "hidden" }}>
-                    {stand.imageUrl ? (
-                      <Image src={stand.imageUrl} alt={stand.name} fill style={{ objectFit: "cover" }} />
-                    ) : (
-                      <span>Image ici</span>
-                    )}
-                  </div>
-                  <div className="preview-card__body">
-                    <span className="preview-tag">
-                      {stand.category === "VENTES" ? "Ventes" : "Repas"}
-                    </span>
-                    <h3 className="preview-card__title">{stand.name}</h3>
-                    <p className="preview-card__description">{stand.description}</p>
-                    {stand.openTime && stand.closeTime && (
-                      <div className="preview-card__time">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                        Ouvert {stand.openTime} – {stand.closeTime}
+            {stands.slice(0, 1).map((stand) => {
+              const categoryLabel =
+                stand.category === "FOOD" ? "Nourriture" :
+                stand.category === "DRINK" ? "Boissons" : "Boutique";
+              return (
+                <div key={stand.id} className="col-12 col-md-4">
+                  <Link href={`/stand/${stand.id}`} className="event-card__link">
+                    <div className="preview-card">
+                      <div className="preview-card__image" style={{ position: "relative", overflow: "hidden" }}>
+                        {stand.imageUrl ? (
+                          <Image src={stand.imageUrl} alt={stand.name} fill style={{ objectFit: "cover" }} />
+                        ) : (
+                          <span>Image ici</span>
+                        )}
                       </div>
-                    )}
-                  </div>
+                      <div className="preview-card__body">
+                        <span className="preview-tag">{categoryLabel}</span>
+                        <h3 className="preview-card__title">{stand.name}</h3>
+                        <p className="preview-card__description">{stand.description}</p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
               {/* Activités */}
               {activities.slice(0, 1).map((activite) => (

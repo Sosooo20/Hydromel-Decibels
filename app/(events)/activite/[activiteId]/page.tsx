@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import prisma from "@/lib/prisma";
 
 export default async function ActiviteDetail({
@@ -20,7 +21,17 @@ export default async function ActiviteDetail({
 
       {/* ─── Bandeau ─── */}
       <div className="detail-hero">
-        <div className="detail-hero__bg" />
+        <div className="detail-hero__bg">
+          {activite.imageUrl && (
+            <Image
+              src={activite.imageUrl}
+              alt={activite.name}
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              priority
+            />
+          )}
+        </div>
         <div className="detail-hero__overlay" />
         <div className="detail-hero__content">
           <Link href="/evenement" className="detail-back">

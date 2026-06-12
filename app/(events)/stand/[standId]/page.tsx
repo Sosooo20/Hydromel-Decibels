@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import prisma from "@/lib/prisma";
 
 export default async function StandDetail({
@@ -9,20 +10,32 @@ export default async function StandDetail({
 }) {
   const { standId } = await params;
 
-  const stand = await prisma.stand.findUnique({
-    where: { id: standId },
+  const stand = await prisma.pointOfInterest.findUnique({
+    where: { id: parseInt(standId) },
   });
 
-  if (!stand) notFound();
+  if (!stand || !["FOOD", "DRINK", "SHOP"].includes(stand.category)) notFound();
 
-  const categoryLabel = stand.category === "VENTES" ? "Ventes" : "Repas";
+  const categoryLabel =
+    stand.category === "FOOD" ? "Nourriture" :
+    stand.category === "DRINK" ? "Boissons" : "Boutique";
 
   return (
     <div className="detail-page">
 
       {/* ─── Bandeau ─── */}
       <div className="detail-hero">
-        <div className="detail-hero__bg" />
+        <div className="detail-hero__bg">
+          {stand.imageUrl && (
+            <Image
+              src={stand.imageUrl}
+              alt={stand.name}
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              priority
+            />
+          )}
+        </div>
         <div className="detail-hero__overlay" />
         <div className="detail-hero__content">
           <Link href="/evenement" className="detail-back">
@@ -34,18 +47,6 @@ export default async function StandDetail({
           </Link>
           <span className="preview-tag">{categoryLabel}</span>
           <h1 className="detail-hero__title">{stand.name}</h1>
-          {stand.openTime && stand.closeTime && (
-            <div className="detail-hero__meta">
-              <div className="detail-meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                Ouvert de {stand.openTime} à {stand.closeTime}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
@@ -78,32 +79,7 @@ export default async function StandDetail({
                 <p className="detail-info-card__label">Catégorie</p>
                 <p className="detail-info-card__value">{categoryLabel}</p>
               </div>
-              {stand.openTime && stand.closeTime && (
-                <div className="detail-info-card">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="var(--color-gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  <p className="detail-info-card__label">Horaires d&apos;ouverture</p>
-                  <p className="detail-info-card__value">{stand.openTime} – {stand.closeTime}</p>
-                </div>
-              )}
             </div>
-          </div>
-
-          <div className="detail-cta">
-            <button className="detail-cta__btn" disabled>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="8.5" cy="7" r="4" />
-                <line x1="20" y1="8" x2="20" y2="14" />
-                <line x1="23" y1="11" x2="17" y2="11" />
-              </svg>
-              S&apos;inscrire à ce stand
-            </button>
-            <p className="detail-cta__note">Les inscriptions ouvriront bientôt</p>
           </div>
 
         </div>
