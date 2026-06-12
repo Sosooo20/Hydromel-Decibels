@@ -59,7 +59,7 @@ export default function FavoriteQuestList({ favorites }: { favorites: FavoriteQu
           className="flex flex-col gap-3 rounded-xl border border-parchment-dark bg-parchment-light p-4 sm:flex-row sm:items-center sm:justify-between"
         >
           <Link
-            href={`/evenement/${event.slug}`}
+            href={`/evenement/${event.id}`}
             className="flex flex-1 flex-col gap-1 no-underline"
           >
             <span className="font-display text-xs uppercase tracking-[0.2em] text-gold">
