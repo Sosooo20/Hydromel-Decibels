@@ -58,7 +58,7 @@ export default function InstallButton() {
     if (!installPrompt) {
         return (
             <div className="btn-hero-outline">
-                Changer de navigateur pour télécharger la PWA
+                Changer de navigateur pour télécharger l&apos;app
             </div>
         );
     }
