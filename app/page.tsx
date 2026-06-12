@@ -2,6 +2,7 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import CountdownTimer from "./components/CountdownTimer";
+import InstallButton from "@/app/components/InstallButton";
 const FESTIVAL_START = "2026-10-16T14:00:00+02:00";
 
 export default async function Home() {
@@ -51,9 +52,7 @@ export default async function Home() {
             <Link href="/login" className="btn-hero-primary">
               Rejoindre l&apos;Aventure &raquo;
             </Link>
-            <Link href="#" className="btn-hero-outline">
-              Télécharger l&apos;Application
-            </Link>
+            <InstallButton/>
           </div>
         </div>
       </section>
